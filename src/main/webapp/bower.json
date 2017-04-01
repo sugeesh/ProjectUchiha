@@ -1,0 +1,24 @@
+{
+  "name": "webapp",
+  "authors": [
+    "buddhiv <9buddhiv@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-ui-router": "1.0.0-beta.3",
+    "q": "1.0.0"
+  }
+}
