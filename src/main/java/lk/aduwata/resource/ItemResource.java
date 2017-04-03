@@ -3,6 +3,8 @@ package lk.aduwata.resource;
 
 import lk.aduwata.model.Item;
 
+import java.util.Date;
+
 /**
  * ItemResource is for sending the item details to the frontend.
  *
@@ -16,12 +18,15 @@ public class ItemResource {
     private String size;
     private boolean used;
     private String description;
+    private Date date;
+    private int state;
+    private byte[] image;
 
 
     public ItemResource() {
     }
 
-    public ItemResource(int itemId, String name, double price, String color, String size, boolean used, String description) {
+    public ItemResource(int itemId, String name, double price, String color, String size, boolean used, String description, Date date, int state) {
         this.itemId = itemId;
         this.name = name;
         this.price = price;
@@ -29,6 +34,8 @@ public class ItemResource {
         this.size = size;
         this.used = used;
         this.description = description;
+        this.date = date;
+        this.state = state;
     }
 
     public int getItemId() {
@@ -87,6 +94,22 @@ public class ItemResource {
         this.description = description;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
     public static ItemResource createResource(Item item) {
         ItemResource itemResource = new ItemResource();
         itemResource.setItemId(item.getItemId());
@@ -96,7 +119,31 @@ public class ItemResource {
         itemResource.setSize(item.getSize());
         itemResource.setUsed(item.getUsed());
         itemResource.setDescription(item.getDescription());
+        itemResource.setDate(item.getDate());
+        itemResource.setState(item.getState());
         return itemResource;
+    }
+
+    public static Item createModel(ItemResource itemResource) {
+        Item item = new Item();
+        item.setItemId(itemResource.getItemId());
+        item.setName(itemResource.getName());
+        item.setPrice(itemResource.getPrice());
+        item.setColor(itemResource.getColor());
+        item.setSize(itemResource.getSize());
+        item.setUsed(itemResource.isUsed());
+        item.setDescription(itemResource.getDescription());
+        item.setDate(itemResource.getDate());
+        item.setState(itemResource.getState());
+        return item;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
 

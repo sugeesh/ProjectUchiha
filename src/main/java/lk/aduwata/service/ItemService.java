@@ -5,6 +5,7 @@ import lk.aduwata.model.Item;
 import lk.aduwata.repository.ItemRepository;
 import lk.aduwata.resource.ItemResource;
 import lk.aduwata.util.rest.DataTableResponse;
+import lk.aduwata.util.rest.PagingUtil;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -33,16 +35,21 @@ public class ItemService {
     public DataTableResponse<ItemResource> getAllItems(String search, int page, int size, Boolean asc, String column) throws ServiceException {
         List<ItemResource> itemList = new ArrayList<>();
         Sort.Direction direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
-        search = search.isEmpty() ? "%" : "%" + search + "%";
+        final String search1 = search.isEmpty() ? "%" : "%" + search + "%";
         DataTableResponse<ItemResource> response = new DataTableResponse<>();
         try {
-            Page<Item> results = itemRepository.findAllByNameLike(search, new PageRequest(page, size, direction, column));
+            Page<Item> results = itemRepository.findAllByNameLike(search1, new PageRequest(page, size, direction, column));
             for (Item item : results) {
                 itemList.add(ItemResource.createResource(item));
             }
-            response.setEntries(results.getTotalElements());
+            response.setTotalEntries(results.getTotalElements());
+            response.setTotalPages(results.getTotalPages());
+            response.setCurrentPage(page);
             response.setDataRows(itemList);
             return response;
+            /*return PagingUtil.queryPage(page, size, asc != null && asc, column,
+                    paging -> itemRepository.findAllByNameLike(search1, paging), ItemResource::createResource);*/
+
         } catch (DataAccessException e) {
 
         }
@@ -59,15 +66,9 @@ public class ItemService {
 
 
     public ItemResource saveItem(ItemResource itemResource) {
-        Item item = new Item(
-                itemResource.getName(),
-                itemResource.getDescription(),
-                itemResource.getSize(),
-                itemResource.getPrice(),
-                itemResource.getColor(),
-                itemResource.isUsed()
-        );
-        Item savedItem = itemRepository.save(item);
+        Item modelItem = ItemResource.createModel(itemResource);
+        modelItem.setDate(new Date());
+        Item savedItem = itemRepository.save(modelItem);
         return ItemResource.createResource(savedItem);
     }
 }

@@ -25,13 +25,13 @@
             var obj = {};
 
             var promises = [];
-            if (method == "get") {
+            if (method == "GET") {
                 promises.push($http.get(url));
             } else if (method == "POST") {
                 promises.push($http.post(url, data));
-            } else if (method == "delete") {
+            } else if (method == "DELETE") {
                 promises.push($http.delete(url + data));
-            } else if (method == "put") {
+            } else if (method == "PUT") {
                 promises.push($http.put(url, data));
             }
 

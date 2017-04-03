@@ -22,9 +22,7 @@ import java.util.List;
 @Component
 public interface ItemRepository extends CrudRepository<Item, Integer> {
 
-    Page<Item> findAllByNameLike(String LastName, Pageable pageable);
-
-
+    Page<Item> findAllByNameLike(String name, Pageable pageable);
 
     void deleteItemByItemId(int id);
 }

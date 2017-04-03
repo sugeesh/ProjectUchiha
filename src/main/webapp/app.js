@@ -9,7 +9,7 @@
             url: '/home',
             views: {
                 "layout": {
-                    templateUrl: 'aduwata/main/home/home.html',
+                    templateUrl: 'aduwata/components/pages/home/home.html',
                     controller: 'HomeController',
                     controllerAs: 'vm'
                 }
@@ -18,8 +18,17 @@
             url: '/about',
             views: {
                 "layout": {
-                    templateUrl: 'aduwata/main/about/about.html',
+                    templateUrl: 'aduwata/components/pages/about/about.html',
                     controller: 'AboutController',
+                    controllerAs: 'vm'
+                }
+            }
+        }).state('new_user', {
+            url: '/new_user',
+            views: {
+                "layout": {
+                    templateUrl: 'aduwata/components/user/register_user/register.html',
+                    controller: 'UserRegisterController',
                     controllerAs: 'vm'
                 }
             }
@@ -27,8 +36,17 @@
             url: '/new_item',
             views: {
                 "layout": {
-                    templateUrl: 'aduwata/sell/add-item/add-item.html',
+                    templateUrl: 'aduwata/components/item/add_item/add_item.html',
                     controller: 'ItemController',
+                    controllerAs: 'vm'
+                }
+            }
+        }).state('login', {
+            url: '/login',
+            views: {
+                "layout": {
+                    templateUrl: 'aduwata/components/pages/login/login.html',
+                    controller: 'LogInController',
                     controllerAs: 'vm'
                 }
             }
@@ -36,7 +54,7 @@
             url: '/404',
             views: {
                 "layout": {
-                    templateUrl: 'aduwata/core/404/404.html',
+                    templateUrl: 'aduwata/components/core/404/404.html',
                     controller: 'NotFoundController',
                     controllerAs: 'vm'
                 }

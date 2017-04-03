@@ -2,6 +2,7 @@ package lk.aduwata.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * This is the model class for the Item.
@@ -35,16 +36,29 @@ public class Item {
     @Column(name = "Used")
     private Boolean used;
 
+    @Column(name = "Date")
+    private Date date;
+
+    @Column(name = "State")
+    private Integer state;
+
+    @Lob
+    @Column(length=100000)
+    private byte[] image;
+
     public Item() {
     }
 
-    public Item(String name, String description, String size, Double price, String color, Boolean used) {
+    public Item(String name, String description, String size, Double price, String color, Boolean used, Date date, Integer state, byte[] image) {
         this.name = name;
         this.description = description;
         this.size = size;
         this.price = price;
         this.color = color;
         this.used = used;
+        this.date = date;
+        this.state = state;
+        this.image = image;
     }
 
     public Integer getItemId() {
@@ -101,5 +115,29 @@ public class Item {
 
     public void setUsed(Boolean used) {
         this.used = used;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

@@ -25,7 +25,7 @@ public class ItemController extends AbstractController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllItems(
+    public Response getItems(
             @QueryParam("search") String search,
             @QueryParam("page") int page,
             @QueryParam("size") int size,
@@ -34,8 +34,7 @@ public class ItemController extends AbstractController {
     ) {
         try {
             if (search == null && page == 0 && size == 0 && asc == null && column == null)
-                return sendSuccessResponse("It is working");
-//                return sendSuccessResponse(itemService.getAllItemsWithoutPagination());
+                return sendSuccessResponse(itemService.getAllItemsWithoutPagination());
             else
                 return sendSuccessResponse(itemService.getAllItems(search, page, size, asc, column));
         } catch (Exception e) {
@@ -50,8 +49,8 @@ public class ItemController extends AbstractController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveItem(ItemResource itemResource) {
         try {
-            return handleServiceException(new Exception("Test1 message"));
-//            return sendSuccessResponse(itemService.saveItem(itemResource));
+//            return handleServiceException(new Exception("Test1 message"));
+            return sendSuccessResponse(itemService.saveItem(itemResource));
         } catch (Exception e) {
             e.printStackTrace();
             return handleServiceException(e);

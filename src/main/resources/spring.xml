@@ -59,6 +59,7 @@
 
     <!-- Services -->
     <bean id="itemService" class="lk.aduwata.service.ItemService"/>
+    <bean id="userService" class="lk.aduwata.service.UserService"/>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:component-scan base-package="lk.aduwata.controller"/>

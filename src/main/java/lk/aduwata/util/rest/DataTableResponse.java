@@ -11,15 +11,17 @@ import java.util.List;
 
 public class DataTableResponse<T> {
 
-    private long entries;
+    private long totalEntries;
+    private int totalPages;
+    private int currentPage;
     private List<T> dataRows;
 
-    public long getEntries() {
-        return entries;
+    public long getTotalEntries() {
+        return totalEntries;
     }
 
-    public void setEntries(long entries) {
-        this.entries = entries;
+    public void setTotalEntries(long totalEntries) {
+        this.totalEntries = totalEntries;
     }
 
     public List<T> getDataRows() {
@@ -28,5 +30,21 @@ public class DataTableResponse<T> {
 
     public void setDataRows(List<T> dataRows) {
         this.dataRows = dataRows;
+    }
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 }
