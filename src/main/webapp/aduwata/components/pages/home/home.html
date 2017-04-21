@@ -6,8 +6,6 @@
         </h1>
     </section>
 
-    <img alt="Product" ng-src="{{vm.im1}}">
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -19,12 +17,14 @@
                         </div>
                         <div class="col-lg-4">
                             <select class="form-control">
-                                <option ng-repeat = "district in vm.districts">{{ district }}</option>
+                                <option ng-repeat="district in vm.districts">{{ district }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="box-body">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" ng-click = "vm.searchItems()">Search</button>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="vm.searchItems()">
+                            Search
+                        </button>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -32,11 +32,12 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat = "item in vm.itemList" >
+            <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat="item in vm.itemList">
                 <div class="box-product">
                     <div class="img-wrapper">
                         <a href="detail.html">
-                            <img alt="Product" src="http://bootdey.com/img/Content/avatar/avatar1.png">
+                            <img cl-src="{{item.itemId}}" width="214" height="214"  dpr="auto" fetch-format="auto" alt="">
+                            <!--<img alt="Product" src="http://bootdey.com/img/Content/avatar/avatar1.png">-->
                             <!--<img alt="Product" ng-src="{{vm.loadImage()}}">-->
                             <!--<img alt="Product" ng-src="{{vm.im1}}">-->
                         </a>
@@ -81,7 +82,8 @@
     <h1>New Items</h1>
     <div class="container">
         <div id="carousel">
-            <figure><a href="www.google.com"><img class="carousel" src="http://lorempixel.com/186/116/nature/1" alt=""></a></figure>
+            <figure><a href="www.google.com"><img class="carousel" src="http://lorempixel.com/186/116/nature/1" alt=""></a>
+            </figure>
             <figure><img class="carousel" src="http://lorempixel.com/186/116/nature/2" alt=""></figure>
             <figure><img class="carousel" src="http://lorempixel.com/186/116/nature/3" alt=""></figure>
             <figure><img class="carousel" src="http://lorempixel.com/186/116/nature/4" alt=""></figure>

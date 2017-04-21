@@ -20,6 +20,7 @@
     "angular-route": "~1.5.0",
     "angular-ui-router": "1.0.0-beta.3",
     "q": "1.0.0",
-    "cloudinary_ng": "^2.1.1"
+    "cloudinary_ng": "^2.1.1",
+    "angular-cloudinary": "^1.2.4"
   }
 }
