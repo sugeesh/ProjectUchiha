@@ -1,6 +1,7 @@
 package lk.aduwata.repository;
 
 
+import lk.aduwata.model.Category;
 import lk.aduwata.model.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,4 +26,6 @@ public interface ItemRepository extends CrudRepository<Item, Integer> {
     Page<Item> findAllByNameLike(String name, Pageable pageable);
 
     void deleteItemByItemId(int id);
+
+    List<Item> findByCategory(Category category);
 }

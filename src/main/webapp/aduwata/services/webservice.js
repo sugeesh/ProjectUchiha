@@ -26,7 +26,11 @@
 
             var promises = [];
             if (method == "GET") {
-                promises.push($http.get(url));
+                // promises.push($http.get(url));
+                promises.push($http({
+                    method: "GET",
+                    url: url
+                }));
             } else if (method == "POST") {
                 promises.push($http.post(url, data));
             } else if (method == "DELETE") {
@@ -36,15 +40,16 @@
             }
 
             return $q.all(promises).then(function (response) {
-                obj = response[0];
-                var deferred = $q.defer();
-                deferred.resolve(obj);
-                return deferred.promise;
-            }, function (error) {
-                //This will be called if $q.all finds any of the requests erroring.
-                console.log("There is an error: "+error);
-                console.log(error);
-              }
+                    obj = response[0];
+                    console.log("Response :" + obj.data);
+                    var deferred = $q.defer();
+                    deferred.resolve(obj);
+                    return deferred.promise;
+                }, function (error) {
+                    //This will be called if $q.all finds any of the requests erroring.
+                    console.log("There is an error: " + error);
+                    console.log(error);
+                }
             );
 
         }

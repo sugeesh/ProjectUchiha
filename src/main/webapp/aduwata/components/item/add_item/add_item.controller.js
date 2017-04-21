@@ -28,12 +28,13 @@
                 "color": vm.itemColor,
                 "size": vm.itemSize,
                 "used": vm.itemUsed,
-                "description": vm.itemDescription,
-                "image": vm.uploadFile
+                "description": vm.itemDescription
             };
-            console.log(vm.uploadFile);
             webservice.call('/item/save_item', 'POST', sendObj).then(function (response) {
                 console.log(response);
+                webservice.call('/item/save_image', 'POST', sendObj).then(function (response) {
+
+                });
             });
         }
 

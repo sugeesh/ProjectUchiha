@@ -46,6 +46,13 @@ public class Item {
     @Column(length=100000)
     private byte[] image;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CategoryID",
+            referencedColumnName = "CategoryID",
+            foreignKey = @ForeignKey(name = "ITEM_CATEGORY_FK")
+    )
+    private Category category;
+
     public Item() {
     }
 
@@ -139,5 +146,13 @@ public class Item {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
