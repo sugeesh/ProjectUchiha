@@ -69,6 +69,26 @@
                         controllerAs: 'vm'
                     }
                 }
+            }).state('search_item', {
+                parent: 'default',
+                url: '/search_item',
+                views: {
+                    "view@default": {
+                        templateUrl: 'aduwata/components/item/search_item/search_item.html',
+                        controller: 'SearchItemController',
+                        controllerAs: 'vm'
+                    }
+                }
+            }).state('category_view', {
+                parent: 'default',
+                url: '/category_view',
+                views: {
+                    "view@default": {
+                        templateUrl: 'aduwata/components/item/category_view/category_view.html',
+                        controller: 'CategoryViewController',
+                        controllerAs: 'vm'
+                    }
+                }
             }).state('login', {
                 url: '/login',
                 views: {

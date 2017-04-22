@@ -6,7 +6,6 @@ import lk.aduwata.model.Item;
 import lk.aduwata.repository.ItemRepository;
 import lk.aduwata.resource.ItemResource;
 import lk.aduwata.util.rest.DataTableResponse;
-import lk.aduwata.util.rest.PagingUtil;
 import org.apache.commons.io.IOUtils;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
