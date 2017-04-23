@@ -42,10 +42,6 @@ public class Item {
     @Column(name = "State")
     private Integer state;
 
-    @Lob
-    @Column(length=100000)
-    private byte[] image;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CategoryID",
             referencedColumnName = "CategoryID",
@@ -56,7 +52,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(String name, String description, String size, Double price, String color, Boolean used, Date date, Integer state, byte[] image) {
+    public Item(String name, String description, String size, Double price, String color, Boolean used, Date date, Integer state) {
         this.name = name;
         this.description = description;
         this.size = size;
@@ -65,7 +61,6 @@ public class Item {
         this.used = used;
         this.date = date;
         this.state = state;
-        this.image = image;
     }
 
     public Integer getItemId() {
@@ -138,14 +133,6 @@ public class Item {
 
     public void setState(Integer state) {
         this.state = state;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 
     public Category getCategory() {

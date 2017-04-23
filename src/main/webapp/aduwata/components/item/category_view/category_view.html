@@ -33,18 +33,18 @@
                     <div class="box-footer no-padding">
                         <ul class="nav nav-stacked">
                             <li><h4 style="margin-left: 15px">Categories</h4></li>
-                            <li><a href="#">Vehicles</a></li>
-                            <li><a href="#">Electronics</a></li>
-                            <li><a href="#">Property</a></li>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Photography</a></li>
-                            <li><a href="#">Pets</a></li>
+                            <li ng-click = "vm.routeToCategory(1,'Vehicles')"><a>Vehicles</a></li>
+                            <li ng-click = "vm.routeToCategory(2,'Electronics')"><a>Electronics</a></li>
+                            <li ng-click = "vm.routeToCategory(3,'Property')"><a>Property</a></li>
+                            <li ng-click = "vm.routeToCategory(4,'Fashion')"><a>Fashion</a></li>
+                            <li ng-click = "vm.routeToCategory(5,'Photography')"><a>Photography</a></li>
+                            <li ng-click = "vm.routeToCategory(6,'Pets')"><a>Pets</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-lg-9">
-                <h4 class="page-header" style="margin-bottom: 0px; cursor: pointer">Vehicles</h4>
+                <h4 class="page-header" style="margin-bottom: 0px; cursor: pointer">{{vm.categoryName}}</h4>
 
                 <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat="item in vm.itemList"
                      style="padding-bottoom: 30px">

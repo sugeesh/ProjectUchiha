@@ -25,7 +25,9 @@ public interface ItemRepository extends CrudRepository<Item, Integer> {
 
     Page<Item> findAllByNameLike(String name, Pageable pageable);
 
+    List<Item> findByCategory(Category category);
+
     void deleteItemByItemId(int id);
 
-    List<Item> findByCategory(Category category);
+    Page<Item> findByCategory(Category category, Pageable pageable);
 }

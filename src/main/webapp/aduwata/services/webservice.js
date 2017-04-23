@@ -16,7 +16,7 @@
         };
         return service;
 
-        function call(url, method, data) {
+        function call(url, method, data, image) {
             console.log(url);
 
             url = 'http://localhost:8080/rest' + url;
@@ -26,19 +26,21 @@
 
             var promises = [];
             if (method == "GET") {
-                // promises.push($http.get(url));
                 promises.push($http({
                     method: "GET",
                     url: url
                 }));
             } else if (method == "POST") {
-                // promises.push($http.post(url, data));
-                promises.push($http({
-                    method: "POST",
-                    headers: {'Content-Type': 'multipart/form-data'},
-                    url: url,
-                    data: data
-                }));
+                if(image) {
+                    promises.push(
+                        $http.post(url,data,{
+                        transformRequest: angular.identity,
+                        headers: {'Content-Type': undefined}
+                    }));
+                }else{
+                    promises.push($http.post(url, data));
+                }
+
             } else if (method == "DELETE") {
                 promises.push($http({
                     method: "DELETE",

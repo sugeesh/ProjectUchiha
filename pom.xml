@@ -281,7 +281,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jersy.version>2.15</jersy.version>
+        <jersy.version>2.9</jersy.version>
         <spring.version>4.2.4.RELEASE</spring.version>
         <org.hibernate-em-version>5.1.0.Final</org.hibernate-em-version>
         <spring.data.version>1.9.0.RELEASE</spring.data.version>

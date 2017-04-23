@@ -12,10 +12,27 @@
     angular.module('aduwata')
         .controller('SearchItemController', SearchItemController);
 
-    SearchItemController.$inject = ['webservice'];
+    SearchItemController.$inject = ['webservice','$stateParams'];
 
-    function SearchItemController(webservice) {
+    function SearchItemController(webservice, $stateParams) {
         var vm = this;
+
+        searchItems($stateParams.search);
+
+        function searchItems(search) {
+            var search = search;
+            var size = 10;
+            var page = 0;
+            var column = "name";
+            var asc = "true";
+
+            var url = "/item"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            webservice.call(url, 'GET').then(function (response) {
+                vm.itemList = response.data.dataRows;
+                console.log(response.data.dataRows);
+            });
+
+        }
 
     }
 })();

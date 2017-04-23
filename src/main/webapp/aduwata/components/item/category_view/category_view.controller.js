@@ -8,26 +8,34 @@
     angular.module('aduwata')
         .controller('CategoryViewController', CategoryViewController);
 
-    CategoryViewController.$inject = ['webservice'];
+    CategoryViewController.$inject = ['webservice', '$stateParams', '$state'];
 
-    function CategoryViewController(webservice) {
+    function CategoryViewController(webservice, $stateParams, $state) {
         var vm = this;
+
+        vm.categoryName = $stateParams.name;
+        vm.routeToCategory = routeToCategory;
 
         loadRecentItems();
 
-        function loadRecentItems() {
-            var search = "";
-            var size = 10;
-            var page = 0;
-            var column = "name";
-            var asc = "true";
 
-            var url = "/item" + "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+        function loadRecentItems() {
+            var id = $stateParams.id;
+            var size = 100;
+            var page = 0;
+            var column = "Date";
+            var asc = "false";
+
+            var url = "/item/get_items_by_category" + "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             webservice.call(url, 'GET').then(function (response) {
-                var il = response.data.dataRows;
-                vm.itemList = il.slice(0, 4);
+                vm.itemList = response.data.dataRows;
                 console.log(response.data.dataRows);
             });
         }
+
+        function routeToCategory(id, name) {
+            $state.go("category_view", {'id': id, 'name': name});
+        }
+
     }
 })();

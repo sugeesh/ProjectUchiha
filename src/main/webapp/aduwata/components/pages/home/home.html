@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-lg-2">
                                 <button style="width: 100%;" type="button" class="btn btn-primary btn-flat"
-                                        ng-click="vm.searchItems()">
+                                        ng-click="vm.routeToSearch()">
                                     Search
                                 </button>
                             </div>
@@ -33,139 +33,147 @@
                     <div class="box-footer no-padding">
                         <ul class="nav nav-stacked">
                             <li><h4 style="margin-left: 15px">Categories</h4></li>
-                            <li><a href="#">Vehicles</a></li>
-                            <li><a href="#">Electronics</a></li>
-                            <li><a href="#">Property</a></li>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Photography</a></li>
-                            <li><a href="#">Pets</a></li>
+                            <li ng-click = "vm.routeToCategory(1,'Vehicles')"><a>Vehicles</a></li>
+                            <li ng-click = "vm.routeToCategory(2,'Electronics')"><a>Electronics</a></li>
+                            <li ng-click = "vm.routeToCategory(3,'Property')"><a>Property</a></li>
+                            <li ng-click = "vm.routeToCategory(4,'Fashion')"><a>Fashion</a></li>
+                            <li ng-click = "vm.routeToCategory(5,'Photography')"><a>Photography</a></li>
+                            <li ng-click = "vm.routeToCategory(6,'Pets')"><a>Pets</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+
             <div class="col-lg-9">
-                <h4 class="page-header" style="margin-bottom: 0px; cursor: pointer">Vehicles</h4>
+                <div class="row">
+                    <h4 class="page-header" style="margin-bottom: 0px; cursor: pointer">Vehicles</h4>
 
-                <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat="item in vm.itemList"
-                     style="padding-bottoom: 30px">
-                    <div class="box-product">
-                        <div class="img-wrapper">
-                            <a href="detail.html">
-                                <img cl-src="{{item.itemId}}" width="214" height="214" dpr="auto" fetch-format="auto"
-                                     alt="">
-                            </a>
-                            <div class="tags">
-                                <span class="label-tags"><span class="label label-danger">Sale</span></span>
-                                <span class="label-tags"><span class="label label-info">Featured</span></span>
-                                <span class="label-tags"><span class="label label-warning">Polo</span></span>
+                    <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat="item in vm.vehicleList"
+                         style="padding-bottoom: 30px">
+                        <div class="box-product">
+                            <div class="img-wrapper">
+                                <a href="detail.html">
+                                    <img cl-src="{{item.itemId}}" width="214" height="214" dpr="auto" fetch-format="auto"
+                                         alt="">
+                                </a>
+                                <!--<div class="tags">
+                                    <span class="label-tags"><span class="label label-danger">Sale</span></span>
+                                    <span class="label-tags"><span class="label label-info">Featured</span></span>
+                                    <span class="label-tags"><span class="label label-warning">Polo</span></span>
+                                </div>-->
+                                <div class="option">
+                                    <!--<a href="#" data-toggle="tooltip" data-placement="bottom" title=""
+                                       data-original-title="Add to Cart"><i
+                                            class="ace-icon fa fa-shopping-cart"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
+                                       data-original-title="Compare"><i class="ace-icon fa fa-align-left"></i></a>-->
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
+                                       data-original-title="Wishlist"><i class="ace-icon fa fa-heart"></i></a>
+                                </div>
                             </div>
-                            <div class="option">
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Add to Cart"><i
-                                        class="ace-icon fa fa-shopping-cart"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Compare"><i class="ace-icon fa fa-align-left"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Wishlist"><i class="ace-icon fa fa-heart"></i></a>
+                            <h6><a href="detail.html">{{item.name}}</a></h6>
+                            <div class="price">
+                                <div>Rs. {{item.price}}
+                                    <!--<span class="price-down">-10%</span>--></div>
+                                <!--<span class="price-old">$15.00</span>-->
                             </div>
-                        </div>
-                        <h6><a href="detail.html">{{item.name}}</a></h6>
-                        <div class="price">
-                            <div>Rs. {{item.price}}
-                                <!--<span class="price-down">-10%</span>--></div>
-                            <!--<span class="price-old">$15.00</span>-->
-                        </div>
-                        <div class="rating">
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star-half-o"></i>
-                            <a href="#">(2 reviews)</a>
+                            <div class="rating">
+                                <!--<i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star-half-o"></i>-->
+                                <a href="#">(2 views)</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h4 class="page-header" style="margin-bottom: 0px; cursor: pointer">Electronics</h4>
+                <div class="row">
+                    <h4 class="page-header" style="margin-bottom: 0px; cursor: pointer">Electronics</h4>
 
-                <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat="item in vm.itemList"
-                     style="padding-bottom: 30px">
-                    <div class="box-product">
-                        <div class="img-wrapper">
-                            <a href="detail.html">
-                                <img cl-src="{{item.itemId}}" width="214" height="214" dpr="auto" fetch-format="auto"
-                                     alt="">
-                            </a>
-                            <div class="tags">
-                                <span class="label-tags"><span class="label label-danger">Sale</span></span>
-                                <span class="label-tags"><span class="label label-info">Featured</span></span>
-                                <span class="label-tags"><span class="label label-warning">Polo</span></span>
+                    <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat="item in vm.electronicsList"
+                         style="padding-bottom: 30px">
+                        <div class="box-product">
+                            <div class="img-wrapper">
+                                <a href="detail.html">
+                                      <img cl-src="{{item.itemId}}" width="214" height="214" dpr="auto" fetch-format="auto"
+                                           alt="">
+                                </a>
+                                <!--<div class="tags">
+                                    <span class="label-tags"><span class="label label-danger">Sale</span></span>
+                                    <span class="label-tags"><span class="label label-info">Featured</span></span>
+                                    <span class="label-tags"><span class="label label-warning">Polo</span></span>
+                                </div>-->
+                                <div class="option">
+                                    <!--<a href="#" data-toggle="tooltip" data-placement="bottom" title=""-->
+                                       <!--data-original-title="Add to Cart"><i-->
+                                            <!--class="ace-icon fa fa-shopping-cart"></i></a>-->
+                                    <!--<a href="#" data-toggle="tooltip" data-placement="bottom" title=""-->
+                                       <!--data-original-title="Compare"><i class="ace-icon fa fa-align-left"></i></a>-->
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
+                                       data-original-title="Wishlist"><i class="ace-icon fa fa-heart"></i></a>
+                                </div>
                             </div>
-                            <div class="option">
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Add to Cart"><i
-                                        class="ace-icon fa fa-shopping-cart"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Compare"><i class="ace-icon fa fa-align-left"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Wishlist"><i class="ace-icon fa fa-heart"></i></a>
+                            <h6><a href="detail.html">{{item.name}}</a></h6>
+                            <div class="price">
+                                <div>Rs. {{item.price}}
+                                    <!--<span class="price-down">-10%</span>--></div>
+                                <!--<span class="price-old">$15.00</span>-->
                             </div>
-                        </div>
-                        <h6><a href="detail.html">{{item.name}}</a></h6>
-                        <div class="price">
-                            <div>Rs. {{item.price}}
-                                <!--<span class="price-down">-10%</span>--></div>
-                            <!--<span class="price-old">$15.00</span>-->
-                        </div>
-                        <div class="rating">
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star-half-o"></i>
-                            <a href="#">(2 reviews)</a>
+                            <div class="rating">
+                                <!--<i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star-half-o"></i>-->
+                                <a href="#">(2 views)</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h4 class="page-header" style="margin-bottom: 0px; cursor: pointer">Property</h4>
+                <div class="row">
+                    <h4 class="page-header" style="margin-bottom: 0px; cursor: pointer">Property</h4>
 
-                <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat="item in vm.itemList"
-                     style="padding-bottom: 30px">
-                    <div class="box-product">
-                        <div class="img-wrapper">
-                            <a href="detail.html">
-                                <img cl-src="{{item.itemId}}" width="214" height="214" dpr="auto" fetch-format="auto"
-                                     alt="">
-                            </a>
-                            <div class="tags">
-                                <span class="label-tags"><span class="label label-danger">Sale</span></span>
-                                <span class="label-tags"><span class="label label-info">Featured</span></span>
-                                <span class="label-tags"><span class="label label-warning">Polo</span></span>
+                    <div class="col-sm-4 col-md-3 box-product-outer" ng-repeat="item in vm.propertyList"
+                         style="padding-bottom: 30px">
+                        <div class="box-product">
+                            <div class="img-wrapper">
+                                <a href="detail.html">
+                                    <img cl-src="{{item.itemId}}" width="214" height="214" dpr="auto" fetch-format="auto"
+                                         alt="">
+                                </a>
+                                <!--<div class="tags">
+                                    <span class="label-tags"><span class="label label-danger">Sale</span></span>
+                                    <span class="label-tags"><span class="label label-info">Featured</span></span>
+                                    <span class="label-tags"><span class="label label-warning">Polo</span></span>
+                                </div>-->
+                                <div class="option">
+                                    <!--<a href="#" data-toggle="tooltip" data-placement="bottom" title=""
+                                       data-original-title="Add to Cart"><i
+                                            class="ace-icon fa fa-shopping-cart"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
+                                       data-original-title="Compare"><i class="ace-icon fa fa-align-left"></i></a>-->
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
+                                       data-original-title="Wishlist"><i class="ace-icon fa fa-heart"></i></a>
+                                </div>
                             </div>
-                            <div class="option">
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Add to Cart"><i
-                                        class="ace-icon fa fa-shopping-cart"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Compare"><i class="ace-icon fa fa-align-left"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title=""
-                                   data-original-title="Wishlist"><i class="ace-icon fa fa-heart"></i></a>
+                            <h6><a href="detail.html">{{item.name}}</a></h6>
+                            <div class="price">
+                                <div>Rs. {{item.price}}
+                                    <!--<span class="price-down">-10%</span>--></div>
+                                <!--<span class="price-old">$15.00</span>-->
                             </div>
-                        </div>
-                        <h6><a href="detail.html">{{item.name}}</a></h6>
-                        <div class="price">
-                            <div>Rs. {{item.price}}
-                                <!--<span class="price-down">-10%</span>--></div>
-                            <!--<span class="price-old">$15.00</span>-->
-                        </div>
-                        <div class="rating">
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star"></i>
-                            <i class="ace-icon fa fa-star-half-o"></i>
-                            <a href="#">(2 reviews)</a>
+                            <div class="rating">
+                                <!--<i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star"></i>
+                                <i class="ace-icon fa fa-star-half-o"></i>-->
+                                <a href="#">(2 views)</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -175,19 +183,19 @@
     </section>
 </div>
 <!--<div class="container carouselMain">-->
-    <!--<h1>New Items</h1>-->
-    <!--<div class="container">-->
-        <!--<div id="carousel">-->
-            <!--<figure><a href="www.google.com"><img class="carousel" src="http://lorempixel.com/186/116/nature/1" alt=""></a>-->
-            <!--</figure>-->
-            <!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/2" alt=""></figure>-->
-            <!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/3" alt=""></figure>-->
-            <!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/4" alt=""></figure>-->
-            <!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/5" alt=""></figure>-->
-            <!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/6" alt=""></figure>-->
-            <!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/7" alt=""></figure>-->
-            <!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/8" alt=""></figure>-->
-            <!--<figure><img class="carousel" src="http://lorempixel.com/186/116/people/9" alt=""></figure>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<h1>New Items</h1>-->
+<!--<div class="container">-->
+<!--<div id="carousel">-->
+<!--<figure><a href="www.google.com"><img class="carousel" src="http://lorempixel.com/186/116/nature/1" alt=""></a>-->
+<!--</figure>-->
+<!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/2" alt=""></figure>-->
+<!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/3" alt=""></figure>-->
+<!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/4" alt=""></figure>-->
+<!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/5" alt=""></figure>-->
+<!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/6" alt=""></figure>-->
+<!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/7" alt=""></figure>-->
+<!--<figure><img class="carousel" src="http://lorempixel.com/186/116/nature/8" alt=""></figure>-->
+<!--<figure><img class="carousel" src="http://lorempixel.com/186/116/people/9" alt=""></figure>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->

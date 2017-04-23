@@ -30,6 +30,12 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
+    /**
+     * This method will save the user to the database
+     * @param userResource userResource for the save
+     * @return UserResource object with saved data
+     */
     public UserResource saveUser(UserResource userResource) {
         User user = new User(
                 userResource.getName(),

@@ -1,11 +1,21 @@
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('Red', '2017-04-03 15:52:15', 'Item Description 1', null, 'Item1', 200, '10', 2, true);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('Blue', '2017-04-03 15:52:17', 'Item Description 2', null, 'Item2', 300, '20', 3, true);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4', null, 'Item3', 200, '40', 2, false);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('Red', '2017-04-03 15:52:15', 'Item Description 1', null, 'Item1', 0, '10', 2, true);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4', null, 'Item3', 0, '40', 2, false);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4', null, 'Item3', 0, '40', 2, false);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('l', '2017-04-03 20:51:28', 'l', null, 'l', 20, 'L', 0, false);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('LL', '2017-04-03 20:52:29', 'l', null, 'l', 20, 'L', 0, false);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('h', '2017-04-03 20:54:23', 'h', null, 'h', 20, 'h', 0, false);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('h', '2017-04-03 20:55:11', 'h', null, 'h', 20, 'H', 0, false);
-INSERT INTO aduwata.Item (Color, Date, Description, image, ItemName, Price, Size, State, Used) VALUES ('p', '2017-04-03 21:14:01', 'p', null, 'p', 20, 'p', 0, true);
+INSERT INTO aduwata.Category (Name, Description) VALUES ('Vehicles', 'Vehicles');
+INSERT INTO aduwata.Category (Name, Description) VALUES ('Electronics', 'Electronics');
+INSERT INTO aduwata.Category (Name, Description) VALUES ('Property', 'Property');
+INSERT INTO aduwata.Category (Name, Description) VALUES ('Fashion', 'Fashion');
+INSERT INTO aduwata.Category (Name, Description) VALUES ('Photograpy', 'Photograpy');
+INSERT INTO aduwata.Category (Name, Description) VALUES ('Other', 'Other');
+
+
+
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Red', '2017-04-03 15:52:15', 'Item Description 1',  'Item1', 200, '10', 2, true,1);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Blue', '2017-04-03 15:52:17', 'Item Description 2', 'Item2', 300, '20', 3, true,1);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4','Item3', 200, '40', 2, false,1);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Red', '2017-04-03 15:52:15', 'Item Description 1',  'Item1', 0, '10', 2, true,2);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4', 'Item3', 0, '40', 2, false,2);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4', 'Item3', 0, '40', 2, false,2);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Red', '2017-04-03 15:52:15', 'Item Description 1',  'Item1', 200, '10', 2, true,3);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Blue', '2017-04-03 15:52:17', 'Item Description 2', 'Item2', 300, '20', 3, true,3);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4','Item3', 200, '40', 2, false,3);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Red', '2017-04-03 15:52:15', 'Item Description 1',  'Item1', 0, '10', 2, true,4);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4', 'Item3', 0, '40', 2, false,4);
+INSERT INTO aduwata.Item (Color, Date, Description,  ItemName, Price, Size, State, Used,CategoryID) VALUES ('Green', '2017-04-03 15:52:18', 'Item Description 4', 'Item3', 0, '40', 2, false,4);

@@ -10,6 +10,8 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
@@ -37,8 +39,6 @@ public class ItemController extends AbstractController {
     @Autowired
     private ItemService itemService;
 
-    private static final String UPLOAD_FOLDER = "./a";
-
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,7 +53,28 @@ public class ItemController extends AbstractController {
             if (search == null && page == 0 && size == 0 && asc == null && column == null)
                 return sendSuccessResponse(itemService.getAllItemsWithoutPagination());
             else
-                return sendSuccessResponse(itemService.getAllItems(search, page, size, asc, column));
+                return sendSuccessResponse(itemService.getItems(search, page, size, asc, column));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return handleServiceException(e);
+        }
+    }
+
+    @GET
+    @Path("/get_items_by_category")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getItems(
+            @QueryParam("id") int id,
+            @QueryParam("page") int page,
+            @QueryParam("size") int size,
+            @QueryParam("asc") Boolean asc,
+            @QueryParam("column") String column
+    ) {
+        try {
+            if (id==0 && page == 0 && size == 0 && asc == null && column == null)
+                return sendSuccessResponse(itemService.getAllItemsWithoutPagination());
+            else
+                return sendSuccessResponse(itemService.getItemsByCategory(id, page, size, asc, column));
         } catch (Exception e) {
             e.printStackTrace();
             return handleServiceException(e);
@@ -63,9 +84,7 @@ public class ItemController extends AbstractController {
     @GET
     @Path("/by_category")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getItemsByCategory(
-            @QueryParam("categoryId") String id
-    ) {
+    public Response getItemsByCategory(@QueryParam("categoryId") String id) {
         return sendSuccessResponse(itemService.getItemsByCategory(id));
     }
 
@@ -76,7 +95,6 @@ public class ItemController extends AbstractController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveItem(ItemResource itemResource) {
         try {
-//            return handleServiceException(new Exception("Test1 message"));
             return sendSuccessResponse(itemService.saveItem(itemResource));
         } catch (Exception e) {
             e.printStackTrace();
@@ -85,13 +103,13 @@ public class ItemController extends AbstractController {
     }
 
 
-    @GET
+   /* @GET
     @Path("/image/{id}")
-    @Produces("image/png")
+    @Produces("image/jpeg")
     public Response buscarFoto(@PathParam("id") Long id,
                                @Context HttpHeaders header,
                                @Context HttpServletResponse response) throws IOException {
-        /*byte[] bytes = null;
+        *//*byte[] bytes = null;
         bytes = itemService.getImageStream(id);
         ByteArrayInputStream in = new ByteArrayInputStream(bytes);
 
@@ -109,7 +127,7 @@ public class ItemController extends AbstractController {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(ex.getMessage()).type(MediaType.TEXT_HTML).build();
         }
 
-        return Response.ok().build();*/
+        return Response.ok().build();*//*
 
         BufferedImage image = ImageIO.read(new File("c.png"));
 
@@ -124,39 +142,38 @@ public class ItemController extends AbstractController {
         return Response.ok(new ByteArrayInputStream(imageData)).build();
 
     }
-
-    @POST
+*/
+   /* @POST
     @Path("/save_image")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadFile(
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail) throws IOException {
 
-        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", "sugeesh",
-                "api_key", "239987644645947",
-                "api_secret", "6IldKlVbtxXwQhJ62S3oXgvjVOk"));
+//        return sendSuccessResponse(itemService.saveImage(uploadedInputStream));
+        return  null;
+    }*/
 
 
-        File file = new File("saveFile");
-        OutputStream outputStream = new FileOutputStream(file);
-        IOUtils.copy(uploadedInputStream, outputStream);
-        outputStream.close();
+    @POST
+    @Path("/save_image")
+//    @Consumes(MediaType.ALL)
+    public Response uploadFile(@RequestParam("file") MultipartFile file) {
 
-        Map result = cloudinary.uploader().upload(file, ObjectUtils.asMap(
-                "public_id", "6",
-                "transformation", new Transformation().crop("limit").width(215).height(215),
-                "eager", Arrays.asList(
-                        new Transformation().width(200).height(200)
-                                .crop("thumb").gravity("face").radius(20)
-                                .effect("sepia"),
-                        new Transformation().width(100).height(150)
-                                .crop("fit").fetchFormat("png")
-                ),
-                "tags", "special, for_homepage"));
-
-
-        return null;
+//        return sendSuccessResponse(itemService.saveImage(uploadedInputStream));
+        return handleServiceException(new Exception("a"));
     }
 
+    /*public @ResponseBody Object newClient(
+            @RequestParam(value = "infoClient") String infoClientString,
+            @RequestParam(value = "file") MultipartFile file) {
+
+        // parse the json string into a valid DTO
+        ClientDTO infoClient = gson.fromJson(infoClientString, ClientDTO.class);
+        //call the proper service method
+        this.clientService.newClient(infoClient,file);
+
+        return null;
+
+    }*/
 }

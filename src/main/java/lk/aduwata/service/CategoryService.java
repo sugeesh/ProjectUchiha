@@ -24,6 +24,17 @@ public class CategoryService {
 
     private CategoryRepository categoryRepository;
 
+
+    /**
+     * This method is for getting the categories for given  search string.
+     * @param search
+     * @param page
+     * @param size
+     * @param asc
+     * @param column
+     * @return
+     * @throws ServiceException
+     */
     public DataTableResponse<CategoryResource> getAllCategories(String search, int page, int size, Boolean asc, String column) throws ServiceException {
         List<CategoryResource> categoryList = new ArrayList<>();
         Sort.Direction direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
@@ -47,6 +58,10 @@ public class CategoryService {
         }
     }
 
+    /**
+     * This method is for getting the all the categories without pagination.
+     * @return list of categoryResources
+     */
     public Object getAllCategoriesWithoutPagination() {
         List<CategoryResource> permissions = new ArrayList<>();
         for (Category permission : categoryRepository.findAll()) {
@@ -56,11 +71,21 @@ public class CategoryService {
     }
 
 
+    /**
+     * This method will return the plain Category Object for the given Id
+     * @param id id of the Category
+     * @return Category Object
+     */
     public Category getCategoryById(String id){
         return categoryRepository.findByCategoryId(id);
     }
 
 
+    /**
+     * This method will save the category Resource
+     * @param categoryResource saving object
+     * @return CatrgoryResource Object with the savedDetails
+     */
     public CategoryResource saveCategory(CategoryResource categoryResource) {
         Category modelCategory = CategoryResource.createModel(categoryResource);
         Category savedCategory = categoryRepository.save(modelCategory);

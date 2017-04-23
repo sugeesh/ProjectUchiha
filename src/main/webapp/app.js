@@ -71,7 +71,7 @@
                 }
             }).state('search_item', {
                 parent: 'default',
-                url: '/search_item',
+                url: '/search_item/:search',
                 views: {
                     "view@default": {
                         templateUrl: 'aduwata/components/item/search_item/search_item.html',
@@ -81,7 +81,7 @@
                 }
             }).state('category_view', {
                 parent: 'default',
-                url: '/category_view',
+                url: '/category/:id/:name',
                 views: {
                     "view@default": {
                         templateUrl: 'aduwata/components/item/category_view/category_view.html',
@@ -111,6 +111,9 @@
 
             $urlRouterProvider.otherwise('/404');
 
+
+
+            /*This is for the cloudinary image service*/
             cloudinaryProvider.config({
                 upload_endpoint: 'https://api.cloudinary.com/v1_1/', // default
                 cloud_name: 'sugeesh' // required
