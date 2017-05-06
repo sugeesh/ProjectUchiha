@@ -71,7 +71,7 @@ public class ItemController extends AbstractController {
             @QueryParam("column") String column
     ) {
         try {
-            if (id==0 && page == 0 && size == 0 && asc == null && column == null)
+            if (id == 0 && page == 0 && size == 0 && asc == null && column == null)
                 return sendSuccessResponse(itemService.getAllItemsWithoutPagination());
             else
                 return sendSuccessResponse(itemService.getItemsByCategory(id, page, size, asc, column));
@@ -102,78 +102,16 @@ public class ItemController extends AbstractController {
         }
     }
 
-
-   /* @GET
-    @Path("/image/{id}")
-    @Produces("image/jpeg")
-    public Response buscarFoto(@PathParam("id") Long id,
-                               @Context HttpHeaders header,
-                               @Context HttpServletResponse response) throws IOException {
-        *//*byte[] bytes = null;
-        bytes = itemService.getImageStream(id);
-        ByteArrayInputStream in = new ByteArrayInputStream(bytes);
-
-
-        response.setContentType("images/png");
-        response.setHeader("Content-Type", "image/png");
-        response.setHeader("Content-Disposition", "inline; filename=\"" + "image.png" + "\"");
-
-        try {
-            OutputStream out = response.getOutputStream();
-            IOUtils.copy(in, out);
-            IOUtils.closeQuietly(in);
-            IOUtils.closeQuietly(out);
-        } catch (IOException ex) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(ex.getMessage()).type(MediaType.TEXT_HTML).build();
-        }
-
-        return Response.ok().build();*//*
-
-        BufferedImage image = ImageIO.read(new File("c.png"));
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(image, "png", baos);
-        byte[] imageData = baos.toByteArray();
-
-        // uncomment line below to send non-streamed
-        // return Response.ok(imageData).build();
-
-        // uncomment line below to send streamed
-        return Response.ok(new ByteArrayInputStream(imageData)).build();
-
-    }
-*/
-   /* @POST
+    @POST
     @Path("/save_image")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
+//    @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadFile(
             @FormDataParam("file") InputStream uploadedInputStream,
-            @FormDataParam("file") FormDataContentDisposition fileDetail) throws IOException {
+            @QueryParam("id") String id
+    ) throws IOException {
 
 //        return sendSuccessResponse(itemService.saveImage(uploadedInputStream));
         return  null;
-    }*/
-
-
-    @POST
-    @Path("/save_image")
-//    @Consumes(MediaType.ALL)
-    public Response uploadFile(@RequestParam("file") MultipartFile file) {
-
-//        return sendSuccessResponse(itemService.saveImage(uploadedInputStream));
-        return handleServiceException(new Exception("a"));
     }
 
-    /*public @ResponseBody Object newClient(
-            @RequestParam(value = "infoClient") String infoClientString,
-            @RequestParam(value = "file") MultipartFile file) {
-
-        // parse the json string into a valid DTO
-        ClientDTO infoClient = gson.fromJson(infoClientString, ClientDTO.class);
-        //call the proper service method
-        this.clientService.newClient(infoClient,file);
-
-        return null;
-
-    }*/
 }

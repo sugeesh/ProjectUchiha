@@ -16,7 +16,7 @@
                         scope.$apply(function () {
                             scope.fileread = loadEvent.target.result;
                         });
-                    }
+                    };
                     reader.readAsDataURL(changeEvent.target.files[0]);
                 });
             }
@@ -39,6 +39,7 @@
         vm.uploadFile = null;
 
         function submitItem() {
+            console.log("Come to here.");
             var sendObj = {
                 "name": vm.itemName,
                 "price": vm.itemPrice,
@@ -47,29 +48,28 @@
                 "used": vm.itemUsed,
                 "description": vm.itemDescription
             };
-            var form = document.getElementById('form-id');
-            var formData = new FormData(form);
+
             // formData.append("file",vm.uploadFile);
 
+            console.log("Come to here. 2");
             webservice.call('/item/save_item', 'POST', sendObj).then(function (response) {
                 console.log(response);
+                console.log("Come to here. 3");
+                vm.hiddenId = response.data.itemId;
 
-                var request = new XMLHttpRequest();
+
+                var form = document.getElementById('form-id');
+                form.action = 'http://localhost:8080/rest/item/save_image?id='+vm.hiddenId;
+                form.submit();
+
+                // var formData = new FormData(form);
+                /*var request = new XMLHttpRequest();
+                var boundary=Math.random().toString().substr(2);
                 request.open('POST', '/item/save_image');
-                request.send(formData);
-              /*
-                webservice.call('/item/save_image', 'POST', formData,true).then(function (response) {
+                request.setRequestHeader("content-type",
+                    "multipart/form-data; charset=utf-8; boundary=" + boundary);
+                request.send(formData);*/
 
-                });*/
-
-                /*sendObj.itemId = response.data.itemId;
-                sendObj.image = vm.uploadFile;
-*/
-                /*var file = {file:vm.uploadFile};
-                var url = "/item/image/8";
-                webservice.call(url, 'POST', vm.uploadFile,true).then(function (response) {
-                    alert("Item Saved Successfully");
-                });*/
             });
         }
 
