@@ -10,7 +10,7 @@ import java.util.Date;
  * @author Sugeesh Chandraweera
  */
 public class UserResource {
-    private int UserId;
+    private int user_id;
     private String name;
     private String email;
     private String password;
@@ -23,8 +23,8 @@ public class UserResource {
     public UserResource() {
     }
 
-    public UserResource(int userId, String name, String email, String password, String address, String mobile, Integer type, Date birthday, String district) {
-        UserId = userId;
+    public UserResource(int user_id, String name, String email, String password, String address, String mobile, Integer type, Date birthday, String district) {
+        this.user_id = user_id;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -35,12 +35,12 @@ public class UserResource {
         this.district = district;
     }
 
-    public int getUserId() {
-        return UserId;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(int userId) {
-        UserId = userId;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {
@@ -109,7 +109,7 @@ public class UserResource {
 
     public static UserResource createResource(User user) {
         UserResource userResource = new UserResource();
-        userResource.setUserId(user.getUserId());
+        userResource.setUser_id(user.getId());
         userResource.setName(user.getName());
         userResource.setAddress(user.getAddress());
         userResource.setMobile(user.getMobile());

@@ -1,29 +1,31 @@
 package lk.aduwata.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * @author Sugeesh Chandraweera
  */
 @Entity
-@Table(name = "Comment")
-public class Comment {
+@Table(name = "Sub_category")
+public class SubCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "sub_category_id")
     private Integer id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "description")
+    private String description;
 
-    public Comment(String name, Date date) {
+    public SubCategory() {
+    }
+
+    public SubCategory(String name, String description) {
         this.name = name;
-        this.date = date;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -42,11 +44,11 @@ public class Comment {
         this.name = name;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

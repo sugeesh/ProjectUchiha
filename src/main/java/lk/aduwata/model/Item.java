@@ -15,36 +15,36 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ItemID")
-    private Integer itemId;
+    @Column(name = "item_id")
+    private Integer id;
 
-    @Column(name = "ItemName")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "Size")
+    @Column(name = "size")
     private String size;
 
-    @Column(name = "Price")
+    @Column(name = "price")
     private Double price;
 
-    @Column(name = "Color")
+    @Column(name = "color")
     private String color;
 
-    @Column(name = "Used")
+    @Column(name = "used")
     private Boolean used;
 
-    @Column(name = "Date")
+    @Column(name = "date")
     private Date date;
 
-    @Column(name = "State")
+    @Column(name = "state")
     private Integer state;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CategoryID",
-            referencedColumnName = "CategoryID",
+    @JoinColumn(name = "category_id",
+            referencedColumnName = "category_id",
             foreignKey = @ForeignKey(name = "ITEM_CATEGORY_FK")
     )
     private Category category;
@@ -63,12 +63,12 @@ public class Item {
         this.state = state;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

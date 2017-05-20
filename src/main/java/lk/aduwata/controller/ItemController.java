@@ -1,30 +1,15 @@
 package lk.aduwata.controller;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.Transformation;
-import com.cloudinary.utils.ObjectUtils;
 import lk.aduwata.resource.ItemResource;
 import lk.aduwata.service.ItemService;
-import org.apache.commons.io.IOUtils;
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Arrays;
-import java.util.Map;
 
 /**
  * ItemController is for handling the item requests
@@ -88,6 +73,13 @@ public class ItemController extends AbstractController {
         return sendSuccessResponse(itemService.getItemsByCategory(id));
     }
 
+    @GET
+    @Path("/by_id")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getItemById(@QueryParam("id") int id) {
+        return sendSuccessResponse(itemService.getItemById(id));
+    }
+
 
     @POST
     @Path("/save_item")
@@ -110,8 +102,8 @@ public class ItemController extends AbstractController {
             @QueryParam("id") String id
     ) throws IOException {
 
-//        return sendSuccessResponse(itemService.saveImage(uploadedInputStream));
-        return  null;
+        return sendSuccessResponse(itemService.saveImage(uploadedInputStream, id));
+//        return  null;
     }
 
 }

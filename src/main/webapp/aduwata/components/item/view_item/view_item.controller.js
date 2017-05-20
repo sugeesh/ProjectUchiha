@@ -7,26 +7,21 @@
     angular.module('aduwata')
         .controller('ViewItemController', ViewItemController);
 
-    ViewItemController.$inject = ['webservice'];
+    ViewItemController.$inject = ['webservice','$stateParams'];
 
-    function ViewItemController(webservice) {
+    function ViewItemController(webservice, $stateParams) {
         var vm = this;
 
-        loadRecentItems();
+        vm.itemId  = $stateParams.id;
+        loadItem(vm.itemId);
 
 
-        function loadRecentItems() {
-            var search = "";
-            var size = 10;
-            var page = 0;
-            var column = "name";
-            var asc = "true";
-
-            var url = "/item"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+        function loadItem(itemId) {
+            var url = "/item/by_id"+ "?" + "id=" + itemId;
             webservice.call(url, 'GET').then(function (response) {
-                var il = response.data.dataRows;
-                vm.itemList = il.slice(0, 4);
-                console.log(response.data.dataRows);
+                vm.itemName = response.data.name;
+                vm.description = response.data.description;
+                vm.price = response.data.price;
             });
         }
 

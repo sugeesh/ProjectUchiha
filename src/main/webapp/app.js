@@ -3,8 +3,8 @@
 
     angular.module('aduwata', [
         'ui.router', 'angular-cloudinary'
-    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider','cloudinaryProvider',
-        function ($stateProvider, $urlRouterProvider, $httpProvider,cloudinaryProvider) {
+    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider',
+        function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider) {
 
             $stateProvider.state('default', {
                 url: '',
@@ -51,7 +51,7 @@
                 }
             }).state('view_item', {
                 parent: 'default',
-                url: '/view_item',
+                url: '/view_item/:id',
                 views: {
                     "view@default": {
                         templateUrl: 'aduwata/components/item/view_item/view_item.html',
@@ -81,7 +81,7 @@
                 }
             }).state('category_view', {
                 parent: 'default',
-                url: '/category/:id/:name',
+                url: '/category/:name/:id',
                 views: {
                     "view@default": {
                         templateUrl: 'aduwata/components/item/category_view/category_view.html',
@@ -92,7 +92,7 @@
             }).state('login', {
                 url: '/login',
                 views: {
-                    "view@default": {
+                    "body@": {
                         templateUrl: 'aduwata/components/pages/login/login.html',
                         controller: 'LogInController',
                         controllerAs: 'vm'
@@ -110,7 +110,6 @@
             });
 
             $urlRouterProvider.otherwise('/404');
-
 
 
             /*This is for the cloudinary image service*/

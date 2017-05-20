@@ -31,20 +31,20 @@
                     url: url
                 }));
             } else if (method == "POST") {
-                if(image) {
+                if (image) {
                     promises.push(
-                        $http.post(url,data,{
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    }));
-                }else{
+                        $http.post(url, data, {
+                            transformRequest: angular.identity,
+                            headers: {'Content-Type': undefined}
+                        }));
+                } else {
                     promises.push($http.post(url, data));
                 }
 
             } else if (method == "DELETE") {
                 promises.push($http({
                     method: "DELETE",
-                    url: url+data
+                    url: url + data
                 }));
                 // promises.push($http.delete(url + data));
             } else if (method == "PUT") {

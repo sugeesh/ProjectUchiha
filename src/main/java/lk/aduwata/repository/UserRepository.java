@@ -1,10 +1,7 @@
 package lk.aduwata.repository;
 
 
-import lk.aduwata.model.Item;
 import lk.aduwata.model.User;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 

@@ -27,7 +27,9 @@ public interface ItemRepository extends CrudRepository<Item, Integer> {
 
     List<Item> findByCategory(Category category);
 
-    void deleteItemByItemId(int id);
+    Item findById(int id);
+
+//    void deleteItemByItemId(int id);
 
     Page<Item> findByCategory(Category category, Pageable pageable);
 }

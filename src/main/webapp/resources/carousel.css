@@ -1,0 +1,49 @@
+body
+{
+    padding-top: 20px;
+}
+#myCarousel .nav a small
+{
+    display: block;
+}
+#myCarousel .nav
+{
+
+    background: rgb(0,0,0);
+    /*background: rgba(0,0,0, 0.7);*/
+    background: rgba(248, 248, 248, 0.7);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+#myCarousel .nav :hover
+{
+
+    background: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.87);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+
+
+#carouselD .nav-justified > li > a
+{
+    border-radius: 0px;
+}
+#carouselD .nav-pills>li[data-slide-to="0"].active a { background-color:  rgba(76,76,76, 0.7); color:#fff;}
+#carouselD .nav-pills>li[data-slide-to="1"].active a { background-color:  rgba(76,76,76, 0.7); color:#fff;}
+#carouselD .nav-pills>li[data-slide-to="2"].active a { background-color:  rgba(76,76,76, 0.7); color:#fff;}
+#carouselD .nav-pills>li[data-slide-to="3"].active a { background-color:  rgba(76,76,76, 0.7); color:#fff;}
+
+#carouselD .nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    position: absolute;
+    bottom: 0;
+}
+
+#myBlank {
+    margin-top: 30px;
+}

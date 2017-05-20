@@ -8,25 +8,25 @@ import javax.persistence.Column;
  * @author Sugeesh Chandraweera
  */
 public class CategoryResource {
-    private int categoryId;
+    private int category_id;
     private String name;
     private String description;
 
     public CategoryResource() {
     }
 
-    public CategoryResource(int categoryId, String name, String description) {
-        this.categoryId = categoryId;
+    public CategoryResource(int category_id, String name, String description) {
+        this.category_id = category_id;
         this.name = name;
         this.description = description;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public int getCategory_id() {
+        return category_id;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
     }
 
     public String getName() {
@@ -48,7 +48,7 @@ public class CategoryResource {
     public static CategoryResource createResource(Category category){
         CategoryResource categoryResource = new CategoryResource();
         categoryResource.setName(category.getName());
-        categoryResource.setCategoryId(category.getCategoryId());
+        categoryResource.setCategory_id(category.getId());
         categoryResource.setDescription(category.getDescription());
         return categoryResource;
     }
@@ -56,7 +56,7 @@ public class CategoryResource {
     public static Category createModel(CategoryResource categoryResource){
         Category category = new Category();
         category.setName(categoryResource.getName());
-        category.setCategoryId(categoryResource.getCategoryId());
+        category.setId(categoryResource.getCategory_id());
         category.setDescription(categoryResource.getDescription());
         return category;
     }

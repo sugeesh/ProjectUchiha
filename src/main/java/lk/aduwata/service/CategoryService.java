@@ -77,7 +77,7 @@ public class CategoryService {
      * @return Category Object
      */
     public Category getCategoryById(String id){
-        return categoryRepository.findByCategoryId(id);
+        return categoryRepository.findById(id);
     }
 
 

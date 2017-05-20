@@ -11,7 +11,7 @@ import java.util.Date;
  * @author Sugeesh Chandraweera
  */
 public class ItemResource {
-    private int itemId;
+    private int item_id;
     private String name;
     private double price;
     private String color;
@@ -26,8 +26,8 @@ public class ItemResource {
     public ItemResource() {
     }
 
-    public ItemResource(int itemId, String name, double price, String color, String size, boolean used, String description, Date date, int state) {
-        this.itemId = itemId;
+    public ItemResource(int item_id, String name, double price, String color, String size, boolean used, String description, Date date, int state) {
+        this.item_id = item_id;
         this.name = name;
         this.price = price;
         this.color = color;
@@ -38,12 +38,12 @@ public class ItemResource {
         this.state = state;
     }
 
-    public int getItemId() {
-        return itemId;
+    public int getItem_id() {
+        return item_id;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
     }
 
     public String getName() {
@@ -112,7 +112,7 @@ public class ItemResource {
 
     public static ItemResource createResource(Item item) {
         ItemResource itemResource = new ItemResource();
-        itemResource.setItemId(item.getItemId());
+        itemResource.setItem_id(item.getId());
         itemResource.setName(item.getName());
         itemResource.setPrice(item.getPrice());
         itemResource.setColor(item.getColor());
@@ -126,7 +126,7 @@ public class ItemResource {
 
     public static Item createModel(ItemResource itemResource) {
         Item item = new Item();
-        item.setItemId(itemResource.getItemId());
+        item.setId(itemResource.getItem_id());
         item.setName(itemResource.getName());
         item.setPrice(itemResource.getPrice());
         item.setColor(itemResource.getColor());

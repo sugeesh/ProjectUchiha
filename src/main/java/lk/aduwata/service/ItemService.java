@@ -102,7 +102,7 @@ public class ItemService {
         List<ItemResource> itemList = new ArrayList<>();
         Sort.Direction direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
         Category category = new Category();
-        category.setCategoryId(id);
+        category.setId(id);
         DataTableResponse<ItemResource> response = new DataTableResponse<>();
         try {
             Page<Item> results = itemRepository.findByCategory(category, new PageRequest(page, size, direction, column));
@@ -130,7 +130,7 @@ public class ItemService {
      */
     public List<ItemResource> getItemsByCategory(String categoryId){
         Category category = new Category();
-        category.setCategoryId(Integer.parseInt(categoryId));
+        category.setId(Integer.parseInt(categoryId));
         List<Item> itemList = itemRepository.findByCategory(category);
         List<ItemResource> itemResourceList = new ArrayList<>();
         for (Item item: itemList){
@@ -139,7 +139,13 @@ public class ItemService {
         return itemResourceList;
     }
 
-    public Map saveImage(InputStream uploadedInputStream) throws IOException {
+    public ItemResource getItemById(int id){
+        Item item = itemRepository.findById(id);
+        return ItemResource.createResource(item);
+    }
+
+
+    public Map saveImage(InputStream uploadedInputStream,String id) throws IOException {
         Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
                 "cloud_name", "sugeesh",
                 "api_key", "239987644645947","api_secret", "6IldKlVbtxXwQhJ62S3oXgvjVOk"));
@@ -151,7 +157,7 @@ public class ItemService {
         outputStream.close();
 
         Map result = cloudinary.uploader().upload(file, ObjectUtils.asMap(
-                "public_id", "6",
+                "public_id", id,
                 "transformation", new Transformation().crop("limit").width(215).height(215),
                 "eager", Arrays.asList(
                         new Transformation().width(200).height(200)

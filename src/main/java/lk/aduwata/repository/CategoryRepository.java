@@ -13,5 +13,5 @@ public interface CategoryRepository  extends CrudRepository<Category, Integer> {
 
     Page<Category> findAllByNameLike(String name, Pageable pageable);
 
-    Category findByCategoryId(String id);
+    Category findById(String id);
 }

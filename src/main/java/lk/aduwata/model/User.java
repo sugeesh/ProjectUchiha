@@ -11,31 +11,31 @@ import java.util.Date;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserID")
-    private Integer userId;
+    @Column(name = "user_id")
+    private Integer id;
 
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "Password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "Mobile")
+    @Column(name = "mobile")
     private String mobile;
 
-    @Column(name = "Type")
+    @Column(name = "type")
     private Integer type;
 
-    @Column(name = "Birthday")
+    @Column(name = "birthday")
     private Date birthday;
 
-    @Column(name = "District")
+    @Column(name = "district")
     private String district;
 
     public User(String name, String email, String password, String address, String mobile, Integer type, Date birthday, String district) {
@@ -49,12 +49,12 @@ public class User {
         this.district = district;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
