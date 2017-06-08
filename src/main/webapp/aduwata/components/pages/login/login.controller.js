@@ -7,34 +7,36 @@
     angular.module('aduwata')
         .controller('LogInController', LogInController);
 
-    LogInController.$inject = ['webservice'];
+    LogInController.$inject = ['webservice','$state','$cookies'];
 
-    function LogInController(webservice) {
+    function LogInController(webservice,$state,$cookies) {
         var vm = this;
 
-/*        vm.submitItem = submitItem;
+        vm.signInUser = signInUser;
 
-        vm.itemName = "";
-        vm.itemPrice = 20;
-        vm.itemColor = "asd";
-        vm.itemSize = "M";
-        vm.itemUsed = 0;
-        vm.itemDescription = "";
-
-        function submitItem() {
-            var sendObj = {
-                "name": vm.itemName,
-                "price": vm.itemPrice,
-                "color": vm.itemColor,
-                "size": vm.itemSize,
-                "used": vm.itemUsed,
-                "description": vm.itemDescription
+        function signInUser(username, password) {
+            var user = {
+                name: username,
+                password: password,
+                type: 0
             };
-            webservice.call('/item/save_item', 'POST', sendObj).then(function (response) {
-                console.log(response);
+            var url = "/user/login_user";
+            webservice.call(url, "POST", user).then(function (response) {
+                console.log(response.data);
+                if (response.data.user_id != null) {
+                    if (response.data.type == 1) {
+                        $cookies.put('userType', 'Customer');
+                    } else if (response.data.type == 2) {
+
+                    }
+                    $cookies.put('userId', response.data.user_id);
+                    $cookies.put('userName', response.data.name);
+                    $state.go('home');
+                } else {
+                    // alert("Username or Password is wrong.");
+                    vm.error = "Username and password mismatch";
+                }
             });
-        }*/
-
-
+        }
     }
 })();

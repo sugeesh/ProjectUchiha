@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('aduwata', [
-        'ui.router', 'angular-cloudinary'
+        'ui.router', 'angular-cloudinary', 'ngCookies'
     ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider',
         function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider) {
 

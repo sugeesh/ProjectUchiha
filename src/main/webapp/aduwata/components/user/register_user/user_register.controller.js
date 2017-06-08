@@ -19,14 +19,18 @@
         vm.passwordRe = "";
 
         function registerUser() {
-            var sendObj = {
-                "name": vm.name,
-                "email": vm.email,
-                "password": vm.password,
-            };
-            webservice.call('/user/user_register', 'POST', sendObj).then(function (response) {
-                console.log(response);
-            });
+            if(vm.password== vm.passwordRe) {
+                var sendObj = {
+                    "name": vm.name,
+                    "email": vm.email,
+                    "password": vm.password
+                };
+                webservice.call('/user/user_register', 'POST', sendObj).then(function (response) {
+                    alert("user registered successfully");
+                });
+            }else {
+                alert("Password mismatch !");
+            }
         }
 
 

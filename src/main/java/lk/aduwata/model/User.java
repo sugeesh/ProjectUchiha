@@ -38,6 +38,9 @@ public class User {
     @Column(name = "district")
     private String district;
 
+    public User() {
+    }
+
     public User(String name, String email, String password, String address, String mobile, Integer type, Date birthday, String district) {
         this.name = name;
         this.email = email;
