@@ -22,7 +22,6 @@
             };
             var url = "/user/login_user";
             webservice.call(url, "POST", user).then(function (response) {
-                console.log(response.data);
                 if (response.data.user_id != null) {
                     if (response.data.type == 1) {
                         $cookies.put('userType', 'Customer');

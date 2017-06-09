@@ -13,9 +13,6 @@
     function LayoutController() {
         var vm = this;
 
-        console.log("Layout Controller");
-
-        vm.name = "Buddhi Vikasitha"
 
     }
 })();

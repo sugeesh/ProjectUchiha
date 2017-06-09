@@ -19,7 +19,6 @@
             "Gampaha","Hambantota","Jaffna","Kalutara","Kegalle","Kilinochchi","Kurunegala",
             "Mannar","Matale","Matara","Moneragala","Mullativu","Nuwara Eliya","Polonnaruwa",
             "Puttalam","Ratnapura","Trincomalee","Vavuniya"];
-        console.log("Home Controller");
 
         // $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|ftp|blob):|data:image\//);
 

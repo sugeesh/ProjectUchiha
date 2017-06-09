@@ -13,9 +13,6 @@
     function NotFoundController() {
         var vm = this;
 
-        console.log("404 Controller");
-
-        vm.name = "Buddhi Vikasitha"
 
     }
 })();

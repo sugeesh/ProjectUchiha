@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('aduwata', [
-        'ui.router', 'angular-cloudinary', 'ngCookies'
+        'ui.router', 'angular-cloudinary', 'ngCookies','flow'
     ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider',
         function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider) {
 
@@ -89,21 +89,22 @@
                         controllerAs: 'vm'
                     }
                 }
+            }).state('404', {
+                parent: 'default',
+                url: '/404',
+                views: {
+                    "view@default": {
+                        templateUrl: 'aduwata/components/core/404/404.html',
+                        controller: 'NotFoundController',
+                        controllerAs: 'vm'
+                    }
+                }
             }).state('login', {
                 url: '/login',
                 views: {
                     "body@": {
                         templateUrl: 'aduwata/components/pages/login/login.html',
                         controller: 'LogInController',
-                        controllerAs: 'vm'
-                    }
-                }
-            }).state('404', {
-                url: '/404',
-                views: {
-                    "view@default": {
-                        templateUrl: 'aduwata/components/core/404/404.html',
-                        controller: 'NotFoundController',
                         controllerAs: 'vm'
                     }
                 }

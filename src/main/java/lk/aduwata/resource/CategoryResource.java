@@ -3,6 +3,8 @@ package lk.aduwata.resource;
 import lk.aduwata.model.Category;
 
 import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Sugeesh Chandraweera
@@ -11,6 +13,7 @@ public class CategoryResource {
     private int category_id;
     private String name;
     private String description;
+    private List subCategoryList;
 
     public CategoryResource() {
     }
@@ -45,11 +48,20 @@ public class CategoryResource {
         this.description = description;
     }
 
+    public List getSubCategoryList() {
+        return subCategoryList;
+    }
+
+    public void setSubCategoryList(List subCategoryList) {
+        this.subCategoryList = subCategoryList;
+    }
+
     public static CategoryResource createResource(Category category){
         CategoryResource categoryResource = new CategoryResource();
         categoryResource.setName(category.getName());
         categoryResource.setCategory_id(category.getId());
         categoryResource.setDescription(category.getDescription());
+        categoryResource.setSubCategoryList(getSubCategoryList(category));
         return categoryResource;
     }
 
@@ -59,5 +71,13 @@ public class CategoryResource {
         category.setId(categoryResource.getCategory_id());
         category.setDescription(categoryResource.getDescription());
         return category;
+    }
+
+    private static List<SubCategoryResource> getSubCategoryList(Category category){
+        ArrayList<SubCategoryResource> subCategoryResourceList = new ArrayList<>();
+        category.getSubCategories().stream().forEach(subCategory -> {
+            subCategoryResourceList.add(SubCategoryResource.createResource(subCategory));
+        });
+        return subCategoryResourceList;
     }
 }

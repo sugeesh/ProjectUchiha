@@ -1,12 +1,13 @@
 package lk.aduwata.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * @author Sugeesh Chandraweera
  */
 @Entity
-@Table(name = "Sub_category")
+@Table(name = "SubCategory")
 public class SubCategory {
 
     @Id
@@ -19,6 +20,16 @@ public class SubCategory {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id",
+            referencedColumnName = "category_id",
+            foreignKey = @ForeignKey(name = "SUBCATEGORY_CATEGORY_FK")
+    )
+    private Category category;
+
+    @OneToMany(mappedBy = "subCategory", fetch = FetchType.EAGER,orphanRemoval = false)
+    private Collection<SCDetail> scDetails;
 
     public SubCategory() {
     }
@@ -50,5 +61,21 @@ public class SubCategory {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Collection<SCDetail> getScDetails() {
+        return scDetails;
+    }
+
+    public void setScDetails(Collection<SCDetail> scDetails) {
+        this.scDetails = scDetails;
     }
 }

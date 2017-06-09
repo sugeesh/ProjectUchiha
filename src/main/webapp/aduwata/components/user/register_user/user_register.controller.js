@@ -7,10 +7,14 @@
     angular.module('aduwata')
         .controller('UserRegisterController', UserRegisterController);
 
-    UserRegisterController.$inject = ['webservice'];
+    UserRegisterController.$inject = ['webservice','$state'];
 
-    function UserRegisterController(webservice) {
+    function UserRegisterController(webservice,$state) {
         var vm = this;
+
+        $state.go("404");
+
+
         vm.registerUser = registerUser;
 
         vm.name = "";

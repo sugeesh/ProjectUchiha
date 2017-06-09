@@ -8,6 +8,7 @@ import lk.aduwata.resource.CategoryResource;
 import lk.aduwata.resource.ItemResource;
 import lk.aduwata.util.rest.DataTableResponse;
 import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,6 +23,7 @@ import java.util.List;
  */
 public class CategoryService {
 
+    @Autowired
     private CategoryRepository categoryRepository;
 
 

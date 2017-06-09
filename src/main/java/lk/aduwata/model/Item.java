@@ -49,6 +49,13 @@ public class Item {
     )
     private Category category;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "sub_category_id",
+            referencedColumnName = "sub_category_id",
+            foreignKey = @ForeignKey(name = "ITEM_SUBCATEGORY_FK")
+    )
+    private SubCategory subCategory;
+
     public Item() {
     }
 
@@ -135,6 +142,7 @@ public class Item {
         this.state = state;
     }
 
+
     public Category getCategory() {
         return category;
     }
@@ -142,4 +150,13 @@ public class Item {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public SubCategory getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(SubCategory subCategory) {
+        this.subCategory = subCategory;
+    }
+
 }

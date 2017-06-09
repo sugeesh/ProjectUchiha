@@ -1,6 +1,7 @@
 package lk.aduwata.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * @author Sugeesh Chandraweera
@@ -19,6 +20,10 @@ public class Category {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER,orphanRemoval = false)
+    private Collection<SubCategory> subCategories;
+
 
     public Category() {
     }
@@ -51,4 +56,13 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Collection<SubCategory> getSubCategories() {
+        return subCategories;
+    }
+
+    public void setSubCategories(Collection<SubCategory> subCategories) {
+        this.subCategories = subCategories;
+    }
+
 }

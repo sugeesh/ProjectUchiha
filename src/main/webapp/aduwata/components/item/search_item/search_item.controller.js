@@ -29,7 +29,6 @@
             var url = "/item"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             webservice.call(url, 'GET').then(function (response) {
                 vm.itemList = response.data.dataRows;
-                console.log(response.data.dataRows);
             });
 
         }

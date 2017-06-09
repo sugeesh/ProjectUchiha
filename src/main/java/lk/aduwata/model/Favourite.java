@@ -7,45 +7,32 @@ import java.util.Date;
  * @author Sugeesh Chandraweera
  */
 @Entity
-@Table(name = "Comment")
-public class Comment {
+@Table(name = "Favourite")
+public class Favourite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id")
+    @Column(name = "id")
     private Integer id;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "date")
-    private Date date;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "item_id",
             referencedColumnName = "item_id",
-            foreignKey = @ForeignKey(name = "COMMENT_ITEM_FK")
+            foreignKey = @ForeignKey(name = "FAVOURITE_ITEM_FK")
     )
     private Item item;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id",
             referencedColumnName = "user_id",
-            foreignKey = @ForeignKey(name = "COMMENT_USER_FK")
+            foreignKey = @ForeignKey(name = "FAVOURITE_USER_FK")
     )
     private User user;
 
-    public Comment() {
+    public Favourite() {
     }
 
-    public Comment(String name, Date date) {
-        this.name = name;
-        this.date = date;
-    }
-
-    public Comment(String name, Date date, Item item, User user) {
-        this.name = name;
-        this.date = date;
+    public Favourite(Item item, User user) {
         this.item = item;
         this.user = user;
     }
@@ -56,22 +43,6 @@ public class Comment {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Item getItem() {
@@ -89,6 +60,5 @@ public class Comment {
     public void setUser(User user) {
         this.user = user;
     }
-
 
 }

@@ -37,10 +37,23 @@
         vm.itemUsed = 0;
         vm.itemDescription = "";
         vm.uploadFile = null;
+        vm.dataValues = {};
+
+        vm.changeSubCategory = changeSubCategory;
+        vm.changeItemDetails = changeItemDetails;
+        vm.changeDetailList0Values = changeDetailList0Values;
+
+        vm.districts = ["Colombo", "Kandy", "Galle", "Ampara", "Anuradhapura", "Badulla", "Batticaloa",
+            "Gampaha", "Hambantota", "Jaffna", "Kalutara", "Kegalle", "Kilinochchi", "Kurunegala",
+            "Mannar", "Matale", "Matara", "Moneragala", "Mullativu", "Nuwara Eliya", "Polonnaruwa",
+            "Puttalam", "Ratnapura", "Trincomalee", "Vavuniya"];
+
+        initCategoriesWithSubCategories();
+
 
         function submitItem() {
-            console.log("Come to here.");
             var sendObj = {
+                "district":vm.district,
                 "name": vm.itemName,
                 "price": vm.itemPrice,
                 "color": vm.itemColor,
@@ -51,28 +64,55 @@
 
             // formData.append("file",vm.uploadFile);
 
-            console.log("Come to here. 2");
             webservice.call('/item/save_item', 'POST', sendObj).then(function (response) {
-                console.log(response);
-                console.log("Come to here. 3");
                 vm.hiddenId = response.data.itemId;
 
 
                 var form = document.getElementById('form-id');
-                form.action = 'http://localhost:8080/rest/item/save_image?id='+vm.hiddenId;
+                form.action = 'http://localhost:8080/rest/item/save_image?id=' + vm.hiddenId;
                 form.submit();
 
                 // var formData = new FormData(form);
                 /*var request = new XMLHttpRequest();
-                var boundary=Math.random().toString().substr(2);
-                request.open('POST', '/item/save_image');
-                request.setRequestHeader("content-type",
-                    "multipart/form-data; charset=utf-8; boundary=" + boundary);
-                request.send(formData);*/
+                 var boundary=Math.random().toString().substr(2);
+                 request.open('POST', '/item/save_image');
+                 request.setRequestHeader("content-type",
+                 "multipart/form-data; charset=utf-8; boundary=" + boundary);
+                 request.send(formData);*/
 
             });
         }
 
+
+        function initCategoriesWithSubCategories() {
+            var search = "";
+            var size = 10;
+            var page = 0;
+            var column = "Name";
+            var asc = "false";
+
+            var url = "/category" + "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            webservice.call(url, 'GET').then(function (response) {
+                vm.categoryList = response.data.dataRows;
+            });
+        }
+
+        function changeSubCategory() {
+            vm.subCategoryList = vm.selectedCategory.subCategoryList;
+        }
+
+        function changeItemDetails() {
+            if (vm.selectedSubCategory != null) {
+                vm.subCategoryDetailList = vm.selectedSubCategory.scdetailList;
+            }
+        }
+
+        function changeDetailList0Values(name,value) {
+            var obj = {};
+            obj[name] = value;
+            // console.log(obj[name]);
+
+        }
 
     }
 })();

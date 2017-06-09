@@ -1,52 +1,139 @@
 <section class="content">
     <div class="row">
-        <div class="col-md-6">
-            <div class="box">
+        <form>
+            <div class="col-md-6">
+                <div class="box">
 
-                <div class="box-header with-border">
-                    <h3 class="box-title">POST YOUR FREE AD</h3>
-                </div>
-
-                <div class="box-body">
-                    <div class="box-tools">
-                        <div class="form-group">
-                            <label for="itemName">Name</label>
-                            <input type="text" class="form-control" id="itemName" ng-model="vm.itemName"
-                                   placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="descriprion">Description</label>
-                            <input type="text" class="form-control" id="descriprion" ng-model="vm.itemDescription"
-                                   placeholder="Description">
-                        </div>
-                        <div class="form-group">
-                            <label for="size">Size</label>
-                            <input type="text" class="form-control" id="size" ng-model="vm.itemSize" placeholder="Size">
-                        </div>
-                        <div class="form-group">
-                            <label for="color">Color</label>
-                            <input type="text" class="form-control" id="color" ng-model="vm.itemColor"
-                                   placeholder="Color">
-                        </div>
-                        <div class="form-group">
-                            <label for="used">Used</label>
-                            <input type="text" class="form-control" id="used" ng-model="vm.itemUsed" placeholder="Used">
-                        </div>
-
-                        <form  id ="form-id" action="http://localhost:8080/rest/item/save_image?id="+{{vm.hiddenId}}
-                               enctype="multipart/form-data" method="post">
-                            <input name="file" id="filename" type="file" fileread="vm.uploadFile"/><br><br>
-                        </form>
-                        <button type="submit" class="btn btn-default" ng-click="vm.submitItem()">Submit</button>
-
+                    <div class="box-header with-border">
+                        <h3 class="box-title">POST YOUR FREE AD</h3>
                     </div>
+                    <!--File Upload Part-->
+                    <!--
+                    <div flow-init>
+                        <span class="btn" flow-btn>Upload File</span>
+                        &lt;!&ndash;
+                        <tr ng-repeat="file in $flow.files">
+                                                <td>{{$index+1}}</td>
+                                                <td>{{file.name}}</td>
+                                            </tr>&ndash;&gt;
+                        <tr ng-repeat="file in $flow.files">
+                            sad
+                            <td>{{$index+1}}</td>
+                            <td>{{file.name}}</td>
+                        </tr>
+                    </div>
+                    -->
+
+
+                    <div class="box-body">
+                        <div class="box-tools">
+                            <div class="form-group">
+                                <label for="itemName">District</label>
+                                <select class="form-control" ng-model = "district">
+                                    <option ng-repeat="district in vm.districts">{{district}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="itemName">Category</label>
+                                <select class="form-control" ng-options="category.name for category in vm.categoryList"
+                                        ng-model="vm.selectedCategory" ng-change="vm.changeSubCategory()">
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="itemName">Sub Category</label>
+                                <select class="form-control" ng-model="vm.selectedSubCategory"
+                                        ng-options="subcategory.name for subcategory in vm.subCategoryList"
+                                        ng-change="vm.changeItemDetails()">
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="itemName">Name</label>
+                                <input type="text" class="form-control" id="itemName" ng-model="name"
+                                       placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="descriprion">Description</label>
+                                <input type="text" class="form-control" id="descriprion" ng-model="description"
+                                       placeholder="Description">
+                            </div>
+                            <div class="form-group">
+                                <label for="size">Price</label>
+                                <input type="text" class="form-control" id="size" ng-model="price"
+                                       placeholder="Price">
+                            </div>
+                            <div class="form-group">
+                                <label for="color">Contact Number</label>
+                                <input type="text" class="form-control" id="color" ng-model="contact"
+                                       placeholder="ContactNumber">
+                            </div>
+
+                            <!--Image Past-->
+                            <!--<form id="form-id" action="http://localhost:8080/rest/item/save_image?id=" +{{vm.hiddenId}}
+                                  enctype="multipart/form-data" method="post">
+                                <input name="file" id="filename" type="file" fileread="vm.uploadFile"/><br><br>
+                            </form>-->
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <!--<div class="box-footer">
+                        Footer
+                    </div>-->
+
+                    <!-- /.box-footer-->
                 </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    Footer
-                </div>
-                <!-- /.box-footer-->
             </div>
-        </div>
+
+            <div class="col-md-6" id="">
+                <div class="box">
+
+                    <div class="box-body">
+                        <div class="box-tools" ng-repeat="detailList in vm.subCategoryDetailList">
+                            <div class="form-group" ng-if="detailList.type == 0">
+                                <label for="itemName">{{detailList.name}}</label>
+                                <input type="text" class="form-control" id="itemDetail" placeholder="{{detailList.name}}"
+                                        ng-model = "a" ng-change="vm.changeDetailList0Values(detailList.name,a)">
+                            </div>
+
+                            <div class="form-group" ng-if="detailList.type == 1 || detailList.type == 2">
+                                <label for="itemName">{{detailList.name}}</label>
+                                <select class="form-control" ng-options="data for data in detailList.dataList"
+                                        ng-model = "selectedModel">
+                                </select>
+                            </div>
+
+                            <div class="form-group" ng-if="detailList.type == 3">
+                                <label for="itemName">{{detailList.name}}</label>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer" ng-if="vm.subCategoryDetailList != null">
+                        <a ui-sref="404">
+                        <button class="btn btn-info pull-right">Submit</button>
+                            <!--<button class="btn btn-info pull-right"
+                                    data-ng-click = "vm.submitItem(this.district,
+                                                                vm.selectedCategory,
+                                                                vm.selectedSubCategory,
+                                                                this.name,
+                                                                this.discription,
+                                                                this.price,
+                                                                this.contact)">Submit</button>-->
+                        </a>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+            </div>
+        </form>
     </div>
 </section>
