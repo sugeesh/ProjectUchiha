@@ -1,6 +1,7 @@
 package lk.aduwata.resource;
 
 import lk.aduwata.model.Category;
+import lk.aduwata.model.SubCategory;
 
 import javax.persistence.Column;
 import java.util.ArrayList;
@@ -75,9 +76,12 @@ public class CategoryResource {
 
     private static List<SubCategoryResource> getSubCategoryList(Category category){
         ArrayList<SubCategoryResource> subCategoryResourceList = new ArrayList<>();
-        category.getSubCategories().stream().forEach(subCategory -> {
+        for(SubCategory subCategory:category.getSubCategories()){
             subCategoryResourceList.add(SubCategoryResource.createResource(subCategory));
-        });
+        }
+//        category.getSubCategories().stream().forEach(subCategory -> {
+//            subCategoryResourceList.add(SubCategoryResource.createResource(subCategory));
+//        });
         return subCategoryResourceList;
     }
 }

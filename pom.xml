@@ -245,7 +245,7 @@
             <version>1.9.1</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
             <version>2.2.1.GA</version>
@@ -257,7 +257,7 @@
             <version>2.2.0.GA</version>
         </dependency>
 
-        <!-- optional, good for handle I/O task -->
+        &lt;!&ndash; optional, good for handle I/O task &ndash;&gt;
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -268,7 +268,8 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-crypto</artifactId>
             <version>3.1.0.RELEASE</version>
-        </dependency>
+        </dependency>-->
+
 
     </dependencies>
 

@@ -14,7 +14,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,12 +31,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
 
 
     /**
      * This method will save the user to the database
+     *
      * @param userResource userResource for the save
      * @return UserResource object with saved data
      */
@@ -44,7 +45,8 @@ public class UserService {
         User user = new User(
                 userResource.getName(),
                 userResource.getEmail(),
-                passwordEncoder.encode(userResource.getPassword()),
+//                passwordEncoder.encode(userResource.getPassword()),
+                userResource.getPassword(),
                 userResource.getAddress(),
                 userResource.getMobile(),
                 userResource.getType(),
@@ -58,11 +60,12 @@ public class UserService {
 
     public Object loginUser(UserResource userResource) {
         User user = userRepository.findByName(userResource.getName());
-        if(user != null && passwordEncoder.matches(userResource.getName(),user.getPassword())){
+      /*  if(user != null && passwordEncoder.matches(userResource.getName(),user.getPassword())){
             return UserResource.createResource(user);
         }else {
             return null;
-        }
+        }*/
+        return null;
     }
 
 }

@@ -66,11 +66,11 @@ public class SCDeatilResource {
         scDeatilResource.setName(scDetail.getName());
         scDeatilResource.setType(scDetail.getType());
         if (scDetail.getDataList() != null) {
-            String[] split = scDetail.getDataList().split(",");
+            String[] splitted = scDetail.getDataList().split(",");
             List<String> dataList = new ArrayList<>();
-            Arrays.stream(split).forEach(word -> {
+            for(String word : splitted){
                 dataList.add(word);
-            });
+            }
             scDeatilResource.setDataList(dataList);
         }
         return scDeatilResource;

@@ -63,7 +63,7 @@
     <bean id="categoryService" class="lk.aduwata.service.CategoryService"/>
 
     <!-- Password Encryption -->
-    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <!--<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>-->
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:component-scan base-package="lk.aduwata.controller"/>
