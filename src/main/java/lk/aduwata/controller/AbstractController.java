@@ -4,7 +4,6 @@ import lk.aduwata.resource.ResponseResource;
 
 import javax.ws.rs.core.Response;
 
-
 /**
  * Abstract controller will contain the common methods for the Controller classes
  *
@@ -19,7 +18,8 @@ public abstract class AbstractController {
      * @return built response Object
      */
     public Response sendSuccessResponse(Object object) {
-        return Response.status(200).entity(object).build();
+        return Response.status(200).entity(object).header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT").build();
     }
 
     /**
@@ -28,7 +28,8 @@ public abstract class AbstractController {
      * @return build response
      */
     public Response sendUnauthorizedResponse() {
-        return Response.status(401).build();
+        return Response.status(401).header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT").build();
     }
 
     /**
@@ -41,7 +42,8 @@ public abstract class AbstractController {
         return Response
                 .status(400)
                 .header("Subject", e.getCause().getMessage())
-                .entity(new ResponseResource(e.getMessage()))
+                .entity(new ResponseResource(e.getMessage())).header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
                 .build();
     }
 
@@ -55,7 +57,8 @@ public abstract class AbstractController {
         return Response
                 .status(400)
                 .header("Subject", customMessage)
-                .entity(new ResponseResource(customMessage))
+                .entity(new ResponseResource(customMessage)).header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
                 .build();
     }
 }

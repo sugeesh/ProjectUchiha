@@ -39,6 +39,7 @@
         vm.uploadFile = null;
         vm.dataValues = {};
 
+
         vm.changeSubCategory = changeSubCategory;
         vm.changeItemDetails = changeItemDetails;
         vm.changeDetailList0Values = changeDetailList0Values;
