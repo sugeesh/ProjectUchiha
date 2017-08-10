@@ -28,8 +28,6 @@ public class SubCategory {
     )
     private Category category;
 
-    @OneToMany(mappedBy = "subCategory", fetch = FetchType.EAGER,orphanRemoval = false)
-    private Collection<SCDetail> scDetails;
 
     public SubCategory() {
     }
@@ -71,11 +69,4 @@ public class SubCategory {
         this.category = category;
     }
 
-    public Collection<SCDetail> getScDetails() {
-        return scDetails;
-    }
-
-    public void setScDetails(Collection<SCDetail> scDetails) {
-        this.scDetails = scDetails;
-    }
 }

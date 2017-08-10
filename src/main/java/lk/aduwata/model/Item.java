@@ -24,17 +24,11 @@ public class Item {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "size")
-    private String size;
-
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "color")
-    private String color;
-
-    @Column(name = "used")
-    private Boolean used;
+    @Column(name = "contactNumber")
+    private String contactNumber;
 
     @Column(name = "date")
     private Date date;
@@ -56,18 +50,26 @@ public class Item {
     )
     private SubCategory subCategory;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "item_detail_id",
+            referencedColumnName = "item_detail_id",
+            foreignKey = @ForeignKey(name = "ITEM_ITEMDETAIL_FK")
+    )
+    private ItemDetail itemDetail;
+
+
     public Item() {
     }
 
-    public Item(String name, String description, String size, Double price, String color, Boolean used, Date date, Integer state) {
+    public Item(String name, String description, Double price, String contactNumber, Date date, Integer state, Category category, SubCategory subCategory) {
         this.name = name;
         this.description = description;
-        this.size = size;
         this.price = price;
-        this.color = color;
-        this.used = used;
+        this.contactNumber = contactNumber;
         this.date = date;
         this.state = state;
+        this.category = category;
+        this.subCategory = subCategory;
     }
 
     public Integer getId() {
@@ -94,14 +96,6 @@ public class Item {
         this.description = description;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     public Double getPrice() {
         return price;
     }
@@ -110,20 +104,12 @@ public class Item {
         this.price = price;
     }
 
-    public String getColor() {
-        return color;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public Boolean getUsed() {
-        return used;
-    }
-
-    public void setUsed(Boolean used) {
-        this.used = used;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public Date getDate() {
@@ -142,7 +128,6 @@ public class Item {
         this.state = state;
     }
 
-
     public Category getCategory() {
         return category;
     }
@@ -158,5 +143,4 @@ public class Item {
     public void setSubCategory(SubCategory subCategory) {
         this.subCategory = subCategory;
     }
-
 }

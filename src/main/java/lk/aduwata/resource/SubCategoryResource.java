@@ -1,6 +1,5 @@
 package lk.aduwata.resource;
 
-import lk.aduwata.model.SCDetail;
 import lk.aduwata.model.SubCategory;
 
 import java.util.ArrayList;
@@ -65,9 +64,9 @@ public class SubCategoryResource {
        subCategoryResource.setDescription(subCategory.getDescription());
        List scDetailList = new ArrayList();
 //       subCategory.getScDetails().stream().forEach(scDetail -> scDetailList.add(SCDeatilResource.createResource(scDetail)));
-       for(SCDetail scDetail:subCategory.getScDetails()){
+    /*   for(SCDetail scDetail:subCategory.getScDetails()){
            scDetailList.add(SCDeatilResource.createResource(scDetail));
-       }
+       }*/
        subCategoryResource.setScdetailList(scDetailList);
        return subCategoryResource;
     }

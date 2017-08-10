@@ -93,6 +93,7 @@ public class ItemService {
     public ItemResource saveItem(ItemResource itemResource) {
         Item modelItem = ItemResource.createModel(itemResource);
         modelItem.setDate(new Date());
+
         Item savedItem = itemRepository.save(modelItem);
         return ItemResource.createResource(savedItem);
     }
