@@ -1,7 +1,6 @@
 package lk.aduwata.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * @author Sugeesh Chandraweera
@@ -16,11 +15,11 @@ public class Favourite {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "item_id",
-            referencedColumnName = "item_id",
+    @JoinColumn(name = "advertisement_id",
+            referencedColumnName = "advertisement_id",
             foreignKey = @ForeignKey(name = "FAVOURITE_ITEM_FK")
     )
-    private Item item;
+    private Advertisement item;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id",
@@ -32,7 +31,7 @@ public class Favourite {
     public Favourite() {
     }
 
-    public Favourite(Item item, User user) {
+    public Favourite(Advertisement item, User user) {
         this.item = item;
         this.user = user;
     }
@@ -45,11 +44,11 @@ public class Favourite {
         this.id = id;
     }
 
-    public Item getItem() {
+    public Advertisement getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(Advertisement item) {
         this.item = item;
     }
 

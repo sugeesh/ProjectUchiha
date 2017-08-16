@@ -29,7 +29,7 @@ public class SubCategory {
     private Category category;
 
     @OneToMany(mappedBy = "subCategory", fetch = FetchType.EAGER,orphanRemoval = false)
-    private Collection<SCDetail> scDetails;
+    private Collection<AdField> adFields;
 
     public SubCategory() {
     }
@@ -71,11 +71,11 @@ public class SubCategory {
         this.category = category;
     }
 
-    public Collection<SCDetail> getScDetails() {
-        return scDetails;
+    public Collection<AdField> getAdFields() {
+        return adFields;
     }
 
-    public void setScDetails(Collection<SCDetail> scDetails) {
-        this.scDetails = scDetails;
+    public void setAdFields(Collection<AdField> adFields) {
+        this.adFields = adFields;
     }
 }

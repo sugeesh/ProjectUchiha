@@ -1,9 +1,7 @@
 package lk.aduwata.controller;
 
 
-import lk.aduwata.resource.ItemResource;
 import lk.aduwata.resource.UserResource;
-import lk.aduwata.service.ItemService;
 import lk.aduwata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

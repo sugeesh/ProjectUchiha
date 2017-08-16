@@ -3,8 +3,8 @@
 
     angular.module('aduwata', [
         'ui.router', 'angular-cloudinary', 'ngCookies','flow'
-    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider',
-        function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider) {
+    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider','$locationProvider',
+        function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider,$locationProvider) {
 
             $stateProvider.state('default', {
                 url: '',
@@ -110,6 +110,7 @@
                 }
             });
 
+            $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise('/404');
 
 

@@ -1,7 +1,7 @@
 package lk.aduwata.controller;
 
-import lk.aduwata.resource.ItemResource;
-import lk.aduwata.service.ItemService;
+import lk.aduwata.resource.AdvertisementResource;
+import lk.aduwata.service.AdvertisementService;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,10 +19,10 @@ import java.io.*;
 
 @Component
 @Path("/item")
-public class ItemController extends AbstractController {
+public class AdvertisementController extends AbstractController {
 
     @Autowired
-    private ItemService itemService;
+    private AdvertisementService advertisementService;
 
 
     @GET
@@ -36,9 +36,9 @@ public class ItemController extends AbstractController {
     ) {
         try {
             if (search == null && page == 0 && size == 0 && asc == null && column == null)
-                return sendSuccessResponse(itemService.getAllItemsWithoutPagination());
+                return sendSuccessResponse(advertisementService.getAllItemsWithoutPagination());
             else
-                return sendSuccessResponse(itemService.getItems(search, page, size, asc, column));
+                return sendSuccessResponse(advertisementService.getItems(search, page, size, asc, column));
         } catch (Exception e) {
             e.printStackTrace();
             return handleServiceException(e);
@@ -57,9 +57,9 @@ public class ItemController extends AbstractController {
     ) {
         try {
             if (id == 0 && page == 0 && size == 0 && asc == null && column == null)
-                return sendSuccessResponse(itemService.getAllItemsWithoutPagination());
+                return sendSuccessResponse(advertisementService.getAllItemsWithoutPagination());
             else
-                return sendSuccessResponse(itemService.getItemsByCategory(id, page, size, asc, column));
+                return sendSuccessResponse(advertisementService.getItemsByCategory(id, page, size, asc, column));
         } catch (Exception e) {
             e.printStackTrace();
             return handleServiceException(e);
@@ -70,24 +70,24 @@ public class ItemController extends AbstractController {
     @Path("/by_category")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getItemsByCategory(@QueryParam("categoryId") String id) {
-        return sendSuccessResponse(itemService.getItemsByCategory(id));
+        return sendSuccessResponse(advertisementService.getItemsByCategory(id));
     }
 
     @GET
     @Path("/by_id")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getItemById(@QueryParam("id") int id) {
-        return sendSuccessResponse(itemService.getItemById(id));
+        return sendSuccessResponse(advertisementService.getItemById(id));
     }
 
 
     @POST
-    @Path("/save_item")
+    @Path("/save_advertisement")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response saveItem(ItemResource itemResource) {
+    public Response saveItem(AdvertisementResource itemResource) {
         try {
-            return sendSuccessResponse(itemService.saveItem(itemResource));
+            return sendSuccessResponse(advertisementService.saveItem(itemResource));
         } catch (Exception e) {
             e.printStackTrace();
             return handleServiceException(e);
@@ -102,7 +102,7 @@ public class ItemController extends AbstractController {
             @QueryParam("id") String id
     ) throws IOException {
 
-        return sendSuccessResponse(itemService.saveImage(uploadedInputStream, id));
+        return sendSuccessResponse(advertisementService.saveImage(uploadedInputStream, id));
 //        return  null;
     }
 

@@ -1,10 +1,8 @@
 package lk.aduwata.resource;
 
-import lk.aduwata.model.SCDetail;
-import lk.aduwata.model.SubCategory;
+import lk.aduwata.model.AdField;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -60,7 +58,7 @@ public class SCDeatilResource {
         this.dataList = dataList;
     }
 
-    public static SCDeatilResource createResource(SCDetail scDetail) {
+    public static SCDeatilResource createResource(AdField scDetail) {
         SCDeatilResource scDeatilResource = new SCDeatilResource();
         scDeatilResource.setId(scDetail.getId());
         scDeatilResource.setName(scDetail.getName());
@@ -76,8 +74,8 @@ public class SCDeatilResource {
         return scDeatilResource;
     }
 
-    public static SCDetail createModel(SCDeatilResource scDeatilResource) {
-        SCDetail scDetail = new SCDetail();
+    public static AdField createModel(SCDeatilResource scDeatilResource) {
+        AdField scDetail = new AdField();
         scDetail.setId(scDeatilResource.getId());
         scDetail.setName(scDeatilResource.getName());
         scDetail.setType(scDeatilResource.getType());

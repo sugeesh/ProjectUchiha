@@ -1,10 +1,9 @@
 package lk.aduwata.resource;
 
-import lk.aduwata.model.SCDetail;
+import lk.aduwata.model.AdField;
 import lk.aduwata.model.SubCategory;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 
@@ -65,7 +64,7 @@ public class SubCategoryResource {
        subCategoryResource.setDescription(subCategory.getDescription());
        List scDetailList = new ArrayList();
 //       subCategory.getScDetails().stream().forEach(scDetail -> scDetailList.add(SCDeatilResource.createResource(scDetail)));
-       for(SCDetail scDetail:subCategory.getScDetails()){
+       for(AdField scDetail:subCategory.getAdFields()){
            scDetailList.add(SCDeatilResource.createResource(scDetail));
        }
        subCategoryResource.setScdetailList(scDetailList);

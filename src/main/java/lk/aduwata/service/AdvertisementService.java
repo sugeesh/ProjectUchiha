@@ -4,10 +4,10 @@ package lk.aduwata.service;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
+import lk.aduwata.model.Advertisement;
 import lk.aduwata.model.Category;
-import lk.aduwata.model.Item;
-import lk.aduwata.repository.ItemRepository;
-import lk.aduwata.resource.ItemResource;
+import lk.aduwata.repository.AdvertisementRepository;
+import lk.aduwata.resource.AdvertisementResource;
 import lk.aduwata.util.rest.DataTableResponse;
 import org.apache.commons.io.IOUtils;
 import org.hibernate.service.spi.ServiceException;
@@ -16,24 +16,21 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.*;
 import java.io.*;
 import java.util.*;
 import java.util.List;
 
 
 /**
- * ItemService is for providing services for the item table
+ * AdvertisementService is for providing services for the item table
  *
  * @author Sugeesh Chandraweera
  */
-public class ItemService {
+public class AdvertisementService {
 
     @Autowired
-    private ItemRepository itemRepository;
+    private AdvertisementRepository itemRepository;
 
     @Autowired
     private CategoryService categoryService;
@@ -46,17 +43,17 @@ public class ItemService {
      * @param size  page size
      * @param asc   ase true or false
      * @param column  sorting column
-     * @return ItemResource List
+     * @return AdvertisementResource List
      */
-    public DataTableResponse<ItemResource> getItems(String search, int page, int size, Boolean asc, String column) throws ServiceException {
-        List<ItemResource> itemList = new ArrayList<>();
+    public DataTableResponse<AdvertisementResource> getItems(String search, int page, int size, Boolean asc, String column) throws ServiceException {
+        List<AdvertisementResource> itemList = new ArrayList<>();
         Sort.Direction direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
         final String search1 = search.isEmpty() ? "%" : "%" + search + "%";
-        DataTableResponse<ItemResource> response = new DataTableResponse<>();
+        DataTableResponse<AdvertisementResource> response = new DataTableResponse<>();
         try {
-            Page<Item> results = itemRepository.findAllByNameLike(search1, new PageRequest(page, size, direction, column));
-            for (Item item : results) {
-                itemList.add(ItemResource.createResource(item));
+            Page<Advertisement> results = itemRepository.findAllByTitleLike(search1, new PageRequest(page, size, direction, column));
+            for (Advertisement item : results) {
+                itemList.add(AdvertisementResource.createResource(item));
             }
             response.setTotalEntries(results.getTotalElements());
             response.setTotalPages(results.getTotalPages());
@@ -64,7 +61,7 @@ public class ItemService {
             response.setDataRows(itemList);
             return response;
             /*return PagingUtil.queryPage(page, size, asc != null && asc, column,
-                    paging -> itemRepository.findAllByNameLike(search1, paging), ItemResource::createResource);*/
+                    paging -> itemRepository.findAllByNameLike(search1, paging), AdvertisementResource::createResource);*/
 
         } catch (DataAccessException e) {
 
@@ -74,40 +71,40 @@ public class ItemService {
 
     /**
      * This method will return the all the items as list
-     * @return ItemResource List
+     * @return AdvertisementResource List
      */
     public Object getAllItemsWithoutPagination() {
-        List<ItemResource> permissions = new ArrayList<>();
-        for (Item permission : itemRepository.findAll()) {
-            permissions.add(ItemResource.createResource(permission));
+        List<AdvertisementResource> permissions = new ArrayList<>();
+        for (Advertisement permission : itemRepository.findAll()) {
+            permissions.add(AdvertisementResource.createResource(permission));
         }
         return permissions;
     }
 
 
     /**
-     * This method will save the Item
+     * This method will save the Advertisement
      * @param itemResource itemResource for the save
-     * @return ItemResource with the resource details
+     * @return AdvertisementResource with the resource details
      */
-    public ItemResource saveItem(ItemResource itemResource) {
-        Item modelItem = ItemResource.createModel(itemResource);
+    public AdvertisementResource saveItem(AdvertisementResource itemResource) {
+        Advertisement modelItem = AdvertisementResource.createModel(itemResource);
         modelItem.setDate(new Date());
-        Item savedItem = itemRepository.save(modelItem);
-        return ItemResource.createResource(savedItem);
+        Advertisement savedItem = itemRepository.save(modelItem);
+        return AdvertisementResource.createResource(savedItem);
     }
 
 
-    public DataTableResponse<ItemResource> getItemsByCategory(int id, int page, int size, Boolean asc, String column) throws ServiceException {
-        List<ItemResource> itemList = new ArrayList<>();
+    public DataTableResponse<AdvertisementResource> getItemsByCategory(int id, int page, int size, Boolean asc, String column) throws ServiceException {
+        List<AdvertisementResource> itemList = new ArrayList<>();
         Sort.Direction direction = asc ? Sort.Direction.ASC : Sort.Direction.DESC;
         Category category = new Category();
         category.setId(id);
-        DataTableResponse<ItemResource> response = new DataTableResponse<>();
+        DataTableResponse<AdvertisementResource> response = new DataTableResponse<>();
         try {
-            Page<Item> results = itemRepository.findByCategory(category, new PageRequest(page, size, direction, column));
-            for (Item item : results) {
-                itemList.add(ItemResource.createResource(item));
+            Page<Advertisement> results = itemRepository.findByCategory(category, new PageRequest(page, size, direction, column));
+            for (Advertisement item : results) {
+                itemList.add(AdvertisementResource.createResource(item));
             }
             response.setTotalEntries(results.getTotalElements());
             response.setTotalPages(results.getTotalPages());
@@ -115,7 +112,7 @@ public class ItemService {
             response.setDataRows(itemList);
             return response;
             /*return PagingUtil.queryPage(page, size, asc != null && asc, column,
-                    paging -> itemRepository.findAllByNameLike(search1, paging), ItemResource::createResource);*/
+                    paging -> itemRepository.findAllByNameLike(search1, paging), AdvertisementResource::createResource);*/
 
         } catch (DataAccessException e) {
 
@@ -126,22 +123,22 @@ public class ItemService {
     /**
      * This method will return the Items by category
      * @param categoryId categoryId of the searching
-     * @return List of ItemResource
+     * @return List of AdvertisementResource
      */
-    public List<ItemResource> getItemsByCategory(String categoryId){
+    public List<AdvertisementResource> getItemsByCategory(String categoryId){
         Category category = new Category();
         category.setId(Integer.parseInt(categoryId));
-        List<Item> itemList = itemRepository.findByCategory(category);
-        List<ItemResource> itemResourceList = new ArrayList<>();
-        for (Item item: itemList){
-            itemResourceList.add(ItemResource.createResource(item));
+        List<Advertisement> itemList = itemRepository.findByCategory(category);
+        List<AdvertisementResource> itemResourceList = new ArrayList<>();
+        for (Advertisement item: itemList){
+            itemResourceList.add(AdvertisementResource.createResource(item));
         }
         return itemResourceList;
     }
 
-    public ItemResource getItemById(int id){
-        Item item = itemRepository.findById(id);
-        return ItemResource.createResource(item);
+    public AdvertisementResource getItemById(int id){
+        Advertisement item = itemRepository.findById(id);
+        return AdvertisementResource.createResource(item);
     }
 
 

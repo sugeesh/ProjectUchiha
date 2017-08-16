@@ -1,11 +1,8 @@
 package lk.aduwata.service;
 
 import lk.aduwata.model.Category;
-import lk.aduwata.model.Item;
 import lk.aduwata.repository.CategoryRepository;
-import lk.aduwata.repository.ItemRepository;
 import lk.aduwata.resource.CategoryResource;
-import lk.aduwata.resource.ItemResource;
 import lk.aduwata.util.rest.DataTableResponse;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,7 +49,7 @@ public class CategoryService {
             response.setDataRows(categoryList);
             return response;
             /*return PagingUtil.queryPage(page, size, asc != null && asc, column,
-                    paging -> itemRepository.findAllByNameLike(search1, paging), ItemResource::createResource);*/
+                    paging -> itemRepository.findAllByNameLike(search1, paging), AdvertisementResource::createResource);*/
 
         } catch (DataAccessException e) {
             throw e;

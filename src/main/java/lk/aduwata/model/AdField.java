@@ -7,11 +7,11 @@ import java.util.List;
  * @author Sugeesh Chandraweera
  */
 @Entity
-@Table(name = "SCDetail")
-public class SCDetail {
+@Table(name = "AdField")
+public class AdField {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "scdetail_id")
+    @Column(name = "ad_field_id")
     private Integer id;
 
     @Column(name = "name")
@@ -20,7 +20,7 @@ public class SCDetail {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id",
             referencedColumnName = "sub_category_id",
-            foreignKey = @ForeignKey(name = "SCDETAILS_SUBCATEGORY_FK")
+            foreignKey = @ForeignKey(name = "ADFIELD_SUBCATEGORY_FK")
     )
     private SubCategory subCategory;
 
@@ -34,7 +34,7 @@ public class SCDetail {
     @Column(name = "data_list")
     private String dataList;
 
-    public SCDetail() {
+    public AdField() {
     }
 
     public Integer getId() {

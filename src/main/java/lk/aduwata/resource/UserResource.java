@@ -5,7 +5,7 @@ import lk.aduwata.model.User;
 import java.util.Date;
 
 /**
- * ItemResource is for sending the item details to the frontend.
+ * AdvertisementResource is for sending the item details to the frontend.
  *
  * @author Sugeesh Chandraweera
  */

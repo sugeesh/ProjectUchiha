@@ -58,7 +58,7 @@
     <jpa:repositories base-package="lk.aduwata.repository"/>
 
     <!-- Services -->
-    <bean id="itemService" class="lk.aduwata.service.ItemService"/>
+    <bean id="itemService" class="lk.aduwata.service.AdvertisementService"/>
     <bean id="userService" class="lk.aduwata.service.UserService"/>
     <bean id="categoryService" class="lk.aduwata.service.CategoryService"/>
 

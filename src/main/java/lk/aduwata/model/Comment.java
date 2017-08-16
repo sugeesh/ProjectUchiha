@@ -22,11 +22,11 @@ public class Comment {
     private Date date;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "item_id",
-            referencedColumnName = "item_id",
+    @JoinColumn(name = "advertisement_id",
+            referencedColumnName = "advertisement_id",
             foreignKey = @ForeignKey(name = "COMMENT_ITEM_FK")
     )
-    private Item item;
+    private Advertisement item;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id",
@@ -43,7 +43,7 @@ public class Comment {
         this.date = date;
     }
 
-    public Comment(String name, Date date, Item item, User user) {
+    public Comment(String name, Date date, Advertisement item, User user) {
         this.name = name;
         this.date = date;
         this.item = item;
@@ -74,11 +74,11 @@ public class Comment {
         this.date = date;
     }
 
-    public Item getItem() {
+    public Advertisement getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(Advertisement item) {
         this.item = item;
     }
 

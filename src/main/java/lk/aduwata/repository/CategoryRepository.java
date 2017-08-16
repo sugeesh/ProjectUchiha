@@ -1,7 +1,6 @@
 package lk.aduwata.repository;
 
 import lk.aduwata.model.Category;
-import lk.aduwata.model.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
