@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * ItemController is for handling the item requests
+ * ItemController is for handling the advertisement requests
  *
  * @author Sugeesh Chandraweera
  */

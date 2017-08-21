@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 /**
- * This repository is for handling the item table
+ * This repository is for handling the advertisement table
  *
  * @author Sugeesh Chandraweera
  */

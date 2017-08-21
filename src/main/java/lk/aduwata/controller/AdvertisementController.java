@@ -12,13 +12,13 @@ import javax.ws.rs.core.Response;
 import java.io.*;
 
 /**
- * ItemController is for handling the item requests
+ * ItemController is for handling the advertisement requests
  *
  * @author Sugeesh Chandraweera
  */
 
 @Component
-@Path("/item")
+@Path("/advertisement")
 public class AdvertisementController extends AbstractController {
 
     @Autowired
