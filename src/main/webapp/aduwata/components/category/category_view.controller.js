@@ -26,14 +26,14 @@
             var column = "Date";
             var asc = "false";
 
-            var url = "/item/get_items_by_category" + "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            var url = "/advertisement/get_items_by_category" + "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             webservice.call(url, 'GET').then(function (response) {
                 vm.itemList = response.data.dataRows;
             });
         }
 
         function routeToCategory(id, name) {
-            $state.go("category_view", {'id': id, 'name': name});
+            $state.go("category", {'id': id, 'name': name});
         }
 
     }

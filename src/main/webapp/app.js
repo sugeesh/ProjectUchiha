@@ -3,8 +3,8 @@
 
     angular.module('aduwata', [
         'ui.router', 'angular-cloudinary', 'ngCookies','flow'
-    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider','$locationProvider',
-        function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider,$locationProvider) {
+    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider',
+        function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider) {
 
             $stateProvider.state('default', {
                 url: '',
@@ -25,16 +25,17 @@
                 url: '/home',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/pages/home/home.html',
+                        templateUrl: 'aduwata/components/core/home/home.html',
                         controller: 'HomeController',
                         controllerAs: 'vm'
                     }
                 }
             }).state('about', {
+                parent: 'default',
                 url: '/about',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/pages/about/about.html',
+                        templateUrl: 'aduwata/components/core/about/about.html',
                         controller: 'AboutController',
                         controllerAs: 'vm'
                     }
@@ -44,17 +45,17 @@
                 url: '/new_user',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/user/register_user/register.html',
+                        templateUrl: 'aduwata/components/user/register/register.html',
                         controller: 'UserRegisterController',
                         controllerAs: 'vm'
                     }
                 }
-            }).state('view_item', {
+            }).state('view', {
                 parent: 'default',
-                url: '/view_item/:id',
+                url: '/view/:id',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/item/view_item/view_item.html',
+                        templateUrl: 'aduwata/components/advertisement/view/view_advertisement.html',
                         controller: 'ViewItemController',
                         controllerAs: 'vm'
                     }
@@ -64,27 +65,27 @@
                 url: '/new_item',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/item/add_item/add_item.html',
+                        templateUrl: 'aduwata/components/advertisement/add/add_advertisement.html',
                         controller: 'ItemController',
                         controllerAs: 'vm'
                     }
                 }
-            }).state('search_item', {
+            }).state('search', {
                 parent: 'default',
-                url: '/search_item/:search',
+                url: '/search/:search',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/item/search_item/search_item.html',
+                        templateUrl: 'aduwata/components/advertisement/search/search_advertisement.html',
                         controller: 'SearchItemController',
                         controllerAs: 'vm'
                     }
                 }
-            }).state('category_view', {
+            }).state('category', {
                 parent: 'default',
                 url: '/category/:name/:id',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/item/category_view/category_view.html',
+                        templateUrl: 'aduwata/components/category/category_view.html',
                         controller: 'CategoryViewController',
                         controllerAs: 'vm'
                     }
@@ -103,18 +104,18 @@
                 url: '/login',
                 views: {
                     "body@": {
-                        templateUrl: 'aduwata/components/pages/login/login.html',
+                        templateUrl: 'aduwata/components/core/login/login.html',
                         controller: 'LogInController',
                         controllerAs: 'vm'
                     }
                 }
             });
 
-            $locationProvider.html5Mode(true);
+            // $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise('/404');
 
 
-            /*This is for the cloudinary image service*/
+            /*This is for the cpagesloudinary image service*/
             cloudinaryProvider.config({
                 upload_endpoint: 'https://api.cloudinary.com/v1_1/', // default
                 cloud_name: 'sugeesh' // required

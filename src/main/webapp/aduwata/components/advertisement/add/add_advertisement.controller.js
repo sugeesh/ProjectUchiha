@@ -65,18 +65,18 @@
 
             // formData.append("file",vm.uploadFile);
 
-            webservice.call('/item/save_item', 'POST', sendObj).then(function (response) {
+            webservice.call('/advertisement/save_item', 'POST', sendObj).then(function (response) {
                 vm.hiddenId = response.data.itemId;
 
 
                 var form = document.getElementById('form-id');
-                form.action = 'http://localhost:8080/rest/item/save_image?id=' + vm.hiddenId;
+                form.action = 'http://localhost:8080/rest/advertisement/save_image?id=' + vm.hiddenId;
                 form.submit();
 
                 // var formData = new FormData(form);
                 /*var request = new XMLHttpRequest();
                  var boundary=Math.random().toString().substr(2);
-                 request.open('POST', '/item/save_image');
+                 request.open('POST', '/advertisement/save_image');
                  request.setRequestHeader("content-type",
                  "multipart/form-data; charset=utf-8; boundary=" + boundary);
                  request.send(formData);*/

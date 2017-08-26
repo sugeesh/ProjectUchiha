@@ -39,39 +39,39 @@
             var column = "Date";
             var asc = "false";
 
-            /*var url = "/item"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            /*var url = "/advertisement"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             webservice.call(url, 'GET').then(function (response) {
                 var il = response.data.dataRows;
                 vm.itemList = il.slice(0, 4);
                 console.log(response.data.dataRows);
             });*/
 
-            var url = "/item/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
-            webservice.call(url, 'GET').then(function (response) {
-                vm.vehicleList = response.data.dataRows;
-            });
-
-            id = 2;
-            url = "/item/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
-            webservice.call(url, 'GET').then(function (response) {
-                vm.electronicsList = response.data.dataRows;
-            });
-
-            id = 3;
-            url = "/item/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
-            webservice.call(url, 'GET').then(function (response) {
-                vm.propertyList = response.data.dataRows;
-            });
+            // var url = "/advertisement/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            // webservice.call(url, 'GET').then(function (response) {
+            //     vm.vehicleList = response.data.dataRows;
+            // });
+            //
+            // id = 2;
+            // url = "/advertisement/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            // webservice.call(url, 'GET').then(function (response) {
+            //     vm.electronicsList = response.data.dataRows;
+            // });
+            //
+            // id = 3;
+            // url = "/advertisement/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            // webservice.call(url, 'GET').then(function (response) {
+            //     vm.propertyList = response.data.dataRows;
+            // });
 
         }
 
         function routeToSearch() {
-            $state.go("search_item", {'search': vm.searchText});
+            $state.go("search", {'search': vm.searchText});
         }
 
 
         function routeToCategory(id,name) {
-            $state.go("category_view", {'id': id,'name':name});
+            $state.go("category", {'id': id,'name':name});
         }
 
 

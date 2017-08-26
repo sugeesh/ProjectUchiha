@@ -17,7 +17,7 @@
 
 
         function loadItem(itemId) {
-            var url = "/item/by_id"+ "?" + "id=" + itemId;
+            var url = "/advertisement/by_id"+ "?" + "id=" + itemId;
             webservice.call(url, 'GET').then(function (response) {
                 vm.itemName = response.data.name;
                 vm.description = response.data.description;
