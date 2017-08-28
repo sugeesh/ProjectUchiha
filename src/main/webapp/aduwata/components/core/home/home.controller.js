@@ -39,26 +39,26 @@
             var column = "Date";
             var asc = "false";
 
-            /*var url = "/advertisement"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            /*var url = "/item"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             webservice.call(url, 'GET').then(function (response) {
                 var il = response.data.dataRows;
                 vm.itemList = il.slice(0, 4);
                 console.log(response.data.dataRows);
             });*/
 
-            // var url = "/advertisement/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            // var url = "/item/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             // webservice.call(url, 'GET').then(function (response) {
             //     vm.vehicleList = response.data.dataRows;
             // });
             //
             // id = 2;
-            // url = "/advertisement/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            // url = "/item/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             // webservice.call(url, 'GET').then(function (response) {
             //     vm.electronicsList = response.data.dataRows;
             // });
             //
             // id = 3;
-            // url = "/advertisement/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            // url = "/item/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             // webservice.call(url, 'GET').then(function (response) {
             //     vm.propertyList = response.data.dataRows;
             // });

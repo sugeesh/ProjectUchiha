@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * This repository is for handling the advertisement table
+ * This repository is for handling the item table
  *
  * @author Sugeesh Chandraweera
  */

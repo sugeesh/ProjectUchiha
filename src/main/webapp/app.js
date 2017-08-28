@@ -3,8 +3,8 @@
 
     angular.module('aduwata', [
         'ui.router', 'angular-cloudinary', 'ngCookies','flow'
-    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider',
-        function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider) {
+    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider','$locationProvider',
+        function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider,$locationProvider) {
 
             $stateProvider.state('default', {
                 url: '',
@@ -25,7 +25,7 @@
                 url: '/home',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/core/home/home.html',
+                        templateUrl: 'aduwata/components/core/home/new_home.html',
                         controller: 'HomeController',
                         controllerAs: 'vm'
                     }
@@ -55,7 +55,7 @@
                 url: '/view/:id',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/advertisement/view/view_advertisement.html',
+                        templateUrl: 'aduwata/components/item/view/view_item.html',
                         controller: 'ViewItemController',
                         controllerAs: 'vm'
                     }
@@ -65,7 +65,7 @@
                 url: '/new_item',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/advertisement/add/add_advertisement.html',
+                        templateUrl: 'aduwata/components/item/add/add_item.html',
                         controller: 'ItemController',
                         controllerAs: 'vm'
                     }
@@ -75,7 +75,7 @@
                 url: '/search/:search',
                 views: {
                     "view@default": {
-                        templateUrl: 'aduwata/components/advertisement/search/search_advertisement.html',
+                        templateUrl: 'aduwata/components/item/search/search_item.html',
                         controller: 'SearchItemController',
                         controllerAs: 'vm'
                     }

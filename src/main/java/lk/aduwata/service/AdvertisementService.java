@@ -23,7 +23,7 @@ import java.util.List;
 
 
 /**
- * AdvertisementService is for providing services for the advertisement table
+ * AdvertisementService is for providing services for the item table
  *
  * @author Sugeesh Chandraweera
  */
@@ -37,7 +37,7 @@ public class AdvertisementService {
 
 
     /**
-     * This method will return the searched advertisement
+     * This method will return the searched item
      * @param search search word
      * @param page  page number
      * @param size  page size

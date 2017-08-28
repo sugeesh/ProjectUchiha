@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 /**
- * AdvertisementService is for providing services for the advertisement table
+ * AdvertisementService is for providing services for the item table
  *
  * @author Sugeesh Chandraweera
  */

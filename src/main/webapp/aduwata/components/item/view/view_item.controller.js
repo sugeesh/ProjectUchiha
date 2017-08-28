@@ -13,17 +13,17 @@
         var vm = this;
 
         vm.itemId  = $stateParams.id;
-        loadItem(vm.itemId);
+        /*loadItem(vm.itemId);
 
 
         function loadItem(itemId) {
-            var url = "/advertisement/by_id"+ "?" + "id=" + itemId;
+            var url = "/item/by_id"+ "?" + "id=" + itemId;
             webservice.call(url, 'GET').then(function (response) {
                 vm.itemName = response.data.name;
                 vm.description = response.data.description;
                 vm.price = response.data.price;
             });
-        }
+        }*/
 
 
     }

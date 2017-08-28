@@ -6,7 +6,7 @@ import lk.aduwata.model.Advertisement;
 import java.util.Date;
 
 /**
- * AdvertisementResource is for sending the advertisement details to the frontend.
+ * AdvertisementResource is for sending the item details to the frontend.
  *
  * @author Sugeesh Chandraweera
  */
@@ -121,8 +121,8 @@ public class AdvertisementResource {
         advertisement.setPrice(advertisementResource.getPrice());
         advertisement.setContact(advertisementResource.getContact());
         advertisement.setDate(advertisementResource.getDate());
-        /*advertisement.setCategory(advertisementResource.getCategory());
-        advertisement.setSubCategory(advertisementResource.getSubCategory());*/
+        /*item.setCategory(advertisementResource.getCategory());
+        item.setSubCategory(advertisementResource.getSubCategory());*/
         return advertisement;
     }
 
