@@ -61,6 +61,8 @@
     <bean id="itemService" class="lk.aduwata.service.AdvertisementService"/>
     <bean id="userService" class="lk.aduwata.service.UserService"/>
     <bean id="categoryService" class="lk.aduwata.service.CategoryService"/>
+    <bean id="adFieldService" class="lk.aduwata.service.AdFieldService"/>
+    <bean id="adDetailService" class="lk.aduwata.service.AdDetailService"/>
 
     <!-- Password Encryption -->
     <!--<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>-->

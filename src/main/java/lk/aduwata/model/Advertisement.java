@@ -24,6 +24,9 @@ public class Advertisement {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "district")
+    private String district;
+
     @Column(name = "price")
     private Double price;
 
@@ -50,9 +53,10 @@ public class Advertisement {
     public Advertisement() {
     }
 
-    public Advertisement(String title, String description, Double price, Date date, String contact, Category category, SubCategory subCategory) {
+    public Advertisement(String title, String description, String district, Double price, Date date, String contact, Category category, SubCategory subCategory) {
         this.title = title;
         this.description = description;
+        this.district = district;
         this.price = price;
         this.date = date;
         this.contact = contact;
@@ -122,5 +126,13 @@ public class Advertisement {
 
     public void setSubCategory(SubCategory subCategory) {
         this.subCategory = subCategory;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
     }
 }

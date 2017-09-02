@@ -38,6 +38,7 @@
         vm.itemDescription = "";
         vm.uploadFile = null;
         vm.dataValues = {};
+        vm.detailsDataList = {};
 
 
         vm.changeSubCategory = changeSubCategory;
@@ -55,23 +56,26 @@
         function submitItem() {
             var sendObj = {
                 "district":vm.district,
-                "name": vm.itemName,
-                "price": vm.itemPrice,
-                "color": vm.itemColor,
-                "size": vm.itemSize,
-                "used": vm.itemUsed,
-                "description": vm.itemDescription
+                "category_id": vm.selectedCategory.category_id,
+                "subCategory_id": vm.selectedSubCategory.id,
+                "title": vm.title,
+                "description": vm.description,
+                "price": vm.price,
+                "contact": vm.contact,
+                "details":vm.detailsDataList
             };
 
             // formData.append("file",vm.uploadFile);
 
-            webservice.call('/item/save_item', 'POST', sendObj).then(function (response) {
-                vm.hiddenId = response.data.itemId;
+            webservice.call('/item/save_advertisement', 'POST', sendObj).then(function (response) {
+                vm.hiddenId = response.data.advertisement_id;
 
 
                 var form = document.getElementById('form-id');
-                form.action = 'http://localhost:8080/rest/item/save_image?id=' + vm.hiddenId;
+                form.action = 'http://localhost:8080/rest/advertisement/save_image?id=' + vm.hiddenId;
+                console.log("Come before form submit");
                 form.submit();
+                console.log("Come after form submit");
 
                 // var formData = new FormData(form);
                 /*var request = new XMLHttpRequest();
@@ -109,10 +113,7 @@
         }
 
         function changeDetailList0Values(name,value) {
-            var obj = {};
-            obj[name] = value;
-            // console.log(obj[name]);
-
+            vm.detailsDataList[name] = value;
         }
 
     }

@@ -35,6 +35,9 @@ public class AdvertisementService {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private AdDetailService adDetailService;
+
 
     /**
      * This method will return the searched item
@@ -91,6 +94,10 @@ public class AdvertisementService {
         Advertisement modelItem = AdvertisementResource.createModel(itemResource);
         modelItem.setDate(new Date());
         Advertisement savedItem = itemRepository.save(modelItem);
+        for(Object set : (((LinkedHashMap) itemResource.getDetails()).entrySet())){
+            Map.Entry set1 = (Map.Entry) set;
+            adDetailService.saveDetails(savedItem,set1.getKey().toString(),set1.getValue().toString());
+        }
         return AdvertisementResource.createResource(savedItem);
     }
 
