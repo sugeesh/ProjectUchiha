@@ -5,6 +5,9 @@ import lk.aduwata.service.AdvertisementService;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -94,16 +97,5 @@ public class AdvertisementController extends AbstractController {
         }
     }
 
-    @POST
-    @Path("/save_image")
-//    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadFile(
-            @FormDataParam("file") InputStream uploadedInputStream,
-            @QueryParam("id") String id
-    ) throws IOException {
-
-        return sendSuccessResponse(advertisementService.saveImage(uploadedInputStream, id));
-//        return  null;
-    }
 
 }

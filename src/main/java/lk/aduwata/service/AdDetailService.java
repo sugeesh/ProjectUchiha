@@ -44,4 +44,10 @@ public class AdDetailService {
         return adDetailRepository.save(adDetail);
     }
 
+
+    public List<AdDetail> findByAdvertisement(Advertisement advertisement) {
+        return adDetailRepository.findByAdvertisement(advertisement);
+    }
+
+
 }

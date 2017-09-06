@@ -28,21 +28,21 @@
                     <div class="box-body">
                         <div class="box-tools">
                             <div class="form-group">
-                                <label >District</label>
-                                <select class="form-control" ng-model = "vm.district">
+                                <label>District</label>
+                                <select class="form-control" ng-model="vm.district">
                                     <option ng-repeat="district in vm.districts">{{district}}</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label >Category</label>
+                                <label>Category</label>
                                 <select class="form-control" ng-options="category.name for category in vm.categoryList"
                                         ng-model="vm.selectedCategory" ng-change="vm.changeSubCategory()">
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label >Sub Category</label>
+                                <label>Sub Category</label>
                                 <select class="form-control" ng-model="vm.selectedSubCategory"
                                         ng-options="subcategory.name for subcategory in vm.subCategoryList"
                                         ng-change="vm.changeItemDetails()">
@@ -72,19 +72,39 @@
                             </div>
 
                             <!--Image Past-->
-                            <form id="form-id" action="http://localhost:8080/rest/advertisement/save_image?id=" +{{vm.hiddenId}}
-                                  enctype="multipart/form-data" method="post">
-                                <input name="file" id="filename" type="file" fileread="vm.uploadFile"/><br><br>
+                            <form name="mainImageForm">
+                                <fieldset>
+                                    <legend>Upload main image</legend>
+                                    <input type="file" ngf-select ng-model="vm.mainFile" name="mainFile"
+                                           ngf-resize="{width: 195, height: 243,centerCrop: true}" ngf-multiple="false"
+                                           ngf-accept="'image/*'"
+                                           ngf-validate="{size: {max: '5MB'}, pattern: '.jpg'}"
+                                           required>
+                                    <br/>
+                                    <div class="product-f-image">
+                                        <img ngf-thumbnail="vm.mainFile" class="thumb"
+                                             ngf-size="{width: 195, height: 243, quality: 0.8}">
+                                    </div>
+                                    <span ng-show="!(mainImageForm.mainFile.$valid)">Please upload jpg image  size < 5 MB</span>
+                                </fieldset>
+                                <br/>
                             </form>
+
+                            <form name="imagesForm">
+                                <fieldset>
+                                    <legend>Upload 3 Other images</legend>
+                                    <input type="file" ngf-select ng-model="vm.files" name="file"
+                                           ngf-resize="{width: 195, height: 243,centerCrop: true}" ngf-multiple="true" ngf-max-files="3"
+                                           ngf-accept="'image/jpg'" required>
+                                    <br/>
+                                    <img ng-repeat="f in vm.files" ngf-thumbnail="f" class="thumb"
+                                         ngf-size="{width: 195, height: 243, quality: 0.8}">
+                                </fieldset>
+                                <br/>
+                            </form>
+
                         </div>
                     </div>
-                    <!-- /.box-body -->
-
-                    <!--<div class="box-footer">
-                        Footer
-                    </div>-->
-
-                    <!-- /.box-footer-->
                 </div>
             </div>
 
@@ -94,20 +114,22 @@
                     <div class="box-body">
                         <div class="box-tools" ng-repeat="detailList in vm.subCategoryDetailList">
                             <div class="form-group" ng-if="detailList.type == 0">
-                                <label >{{detailList.name}}</label>
-                                <input type="text" class="form-control" id="itemDetail" placeholder="{{detailList.name}}"
-                                        ng-model = "a" ng-change="vm.changeDetailList0Values(detailList.id,a)">
+                                <label>{{detailList.name}}</label>
+                                <input type="text" class="form-control" id="itemDetail"
+                                       placeholder="{{detailList.name}}"
+                                       ng-model="a" ng-change="vm.changeDetailList0Values(detailList.id,a)">
                             </div>
 
                             <div class="form-group" ng-if="detailList.type == 1 || detailList.type == 2">
-                                <label >{{detailList.name}}</label>
+                                <label>{{detailList.name}}</label>
                                 <select class="form-control" ng-options="data for data in detailList.dataList"
-                                        ng-model = "selectedModel" ng-change="vm.changeDetailList0Values(detailList.id,selectedModel)">
+                                        ng-model="selectedModel"
+                                        ng-change="vm.changeDetailList0Values(detailList.id,selectedModel)">
                                 </select>
                             </div>
 
                             <div class="form-group" ng-if="detailList.type == 3">
-                                <label >{{detailList.name}}</label>
+                                <label>{{detailList.name}}</label>
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox">
@@ -119,7 +141,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer" ng-if="vm.subCategoryDetailList != null">
-                            <button class="btn btn-info pull-right" ng-click = "vm.submitItem()">Submit</button>
+                        <button class="btn btn-info pull-right" ng-click="vm.submitItem()">Submit</button>
                     </div>
                     <!-- /.box-footer-->
                 </div>

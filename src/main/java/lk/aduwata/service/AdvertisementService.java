@@ -4,9 +4,11 @@ package lk.aduwata.service;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
+import lk.aduwata.model.AdDetail;
 import lk.aduwata.model.Advertisement;
 import lk.aduwata.model.Category;
 import lk.aduwata.repository.AdvertisementRepository;
+import lk.aduwata.resource.AdDetailResource;
 import lk.aduwata.resource.AdvertisementResource;
 import lk.aduwata.util.rest.DataTableResponse;
 import org.apache.commons.io.IOUtils;
@@ -37,6 +39,9 @@ public class AdvertisementService {
 
     @Autowired
     private AdDetailService adDetailService;
+
+    @Autowired
+    private AdFieldService adFieldService;
 
 
     /**
@@ -145,7 +150,14 @@ public class AdvertisementService {
 
     public AdvertisementResource getItemById(int id){
         Advertisement item = itemRepository.findById(id);
-        return AdvertisementResource.createResource(item);
+        AdvertisementResource resource = AdvertisementResource.createResource(item);
+        List<AdDetail> byAdvertisement = adDetailService.findByAdvertisement(item);
+        List<AdDetailResource> resourceList = new ArrayList<>();
+        for(AdDetail adDetail: byAdvertisement){
+            resourceList.add(new AdDetailResource(adDetail.getField().getName(),adDetail.getValue()));
+        }
+        resource.setDetailsObjList(resourceList);
+        return resource;
     }
 
 

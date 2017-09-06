@@ -5,7 +5,9 @@ import lk.aduwata.model.Advertisement;
 import lk.aduwata.model.Category;
 import lk.aduwata.model.SubCategory;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * AdvertisementResource is for sending the item details to the frontend.
@@ -16,12 +18,15 @@ public class AdvertisementResource {
     private int advertisement_id;
     private String district;
     private int category_id;
+    private String category_name;
     private int subCategory_id;
+    private String subCategory_name;
     private String title;
     private String description;
     private double price;
     private String contact;
     private Object details;
+    private List<AdDetailResource> detailsObjList;
     private byte[] image;
 
     public AdvertisementResource() {
@@ -62,6 +67,8 @@ public class AdvertisementResource {
         advertisementResource.setSubCategory_id(advertisement.getSubCategory().getId());
         advertisementResource.setPrice(advertisement.getPrice());
         advertisementResource.setContact(advertisement.getContact());
+        advertisementResource.setCategory_name(advertisement.getCategory().getName());
+        advertisementResource.setSubCategory_name(advertisement.getSubCategory().getName());
         return advertisementResource;
     }
 
@@ -136,6 +143,30 @@ public class AdvertisementResource {
 
     public void setDetails(Object details) {
         this.details = details;
+    }
+
+    public String getCategory_name() {
+        return category_name;
+    }
+
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
+    }
+
+    public String getSubCategory_name() {
+        return subCategory_name;
+    }
+
+    public void setSubCategory_name(String subCategory_name) {
+        this.subCategory_name = subCategory_name;
+    }
+
+    public List getDetailsObjList() {
+        return detailsObjList;
+    }
+
+    public void setDetailsObjList(List detailsObjList) {
+        this.detailsObjList = detailsObjList;
     }
 }
 

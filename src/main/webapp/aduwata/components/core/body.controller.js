@@ -16,6 +16,10 @@
         vm.loggedin = $cookies.get('userId');
         vm.logOut = logOut;
 
+        vm.districts = ["Colombo","Kandy","Galle","Ampara","Anuradhapura","Badulla","Batticaloa",
+            "Gampaha","Hambantota","Jaffna","Kalutara","Kegalle","Kilinochchi","Kurunegala",
+            "Mannar","Matale","Matara","Moneragala","Mullativu","Nuwara Eliya","Polonnaruwa",
+            "Puttalam","Ratnapura","Trincomalee","Vavuniya"];
 
         function logOut() {
             $cookies.remove('userId');

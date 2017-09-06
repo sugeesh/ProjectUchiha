@@ -12,9 +12,7 @@
 
     function HomeController(webservice, $state) {
         var vm = this;
-        vm.im1 = null;
 
-        vm.searchText = "";
         vm.districts = ["Colombo","Kandy","Galle","Ampara","Anuradhapura","Badulla","Batticaloa",
             "Gampaha","Hambantota","Jaffna","Kalutara","Kegalle","Kilinochchi","Kurunegala",
             "Mannar","Matale","Matara","Moneragala","Mullativu","Nuwara Eliya","Polonnaruwa",
@@ -22,8 +20,8 @@
 
         // $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|ftp|blob):|data:image\//);
 
-        vm.routeToCategory = routeToCategory;
-        vm.routeToSearch = routeToSearch;
+        // vm.routeToCategory = routeToCategory;
+        // vm.routeToSearch = routeToSearch;
 
         vm.vehicleList = [];
         vm.electronicsList = [];
@@ -31,20 +29,32 @@
 
         loadRecentItems();
 
-
         function loadRecentItems() {
             var id = 1;
             var size = 4;
             var page = 0;
             var column = "Date";
             var asc = "false";
+            var search = "";
 
-            /*var url = "/item"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+
+            var url = "/item"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             webservice.call(url, 'GET').then(function (response) {
                 var il = response.data.dataRows;
-                vm.itemList = il.slice(0, 4);
-                console.log(response.data.dataRows);
-            });*/
+                vm.vehicleList = il.slice(0, 6);
+
+
+            });
+
+            var url = "/item"+ "?" + "search=" + search + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
+            webservice.call(url, 'GET').then(function (response) {
+                var il = response.data.dataRows;
+                vm.electronicList = il.slice(0, 6);
+
+
+            });
+
+
 
             // var url = "/item/get_items_by_category"+ "?" + "id=" + id + "&size=" + size + "&page=" + page + "&column=" + column + "&asc=" + asc;
             // webservice.call(url, 'GET').then(function (response) {
@@ -65,8 +75,9 @@
 
         }
 
-        function routeToSearch() {
-            $state.go("search", {'search': vm.searchText});
+        vm.routeToView = function routeToView(id) {
+            $state.go("view", {'id': id});
+            jQuery('html, body').animate({ scrollTop: 400 }, 200);
         }
 
 

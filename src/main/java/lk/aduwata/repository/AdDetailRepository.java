@@ -22,4 +22,6 @@ public interface AdDetailRepository extends CrudRepository<AdDetail, Integer> {
 
     AdDetail findById(int id);
 
+    List<AdDetail> findByAdvertisement(Advertisement advertisement);
+
 }

@@ -13,17 +13,23 @@
         var vm = this;
 
         vm.itemId  = $stateParams.id;
-        /*loadItem(vm.itemId);
+        loadItem(vm.itemId);
 
 
         function loadItem(itemId) {
             var url = "/item/by_id"+ "?" + "id=" + itemId;
             webservice.call(url, 'GET').then(function (response) {
-                vm.itemName = response.data.name;
+                vm.title = response.data.title;
                 vm.description = response.data.description;
                 vm.price = response.data.price;
+                vm.district = response.data.district;
+                vm.category_name = response.data.category_name;
+                vm.subCategory_name = response.data.subCategory_name;
+                vm.contact = response.data.contact;
+                vm.details = response.data.detailsObjList;
+
             });
-        }*/
+        }
 
 
     }

@@ -2,9 +2,10 @@
     'use strict';
 
     angular.module('aduwata', [
-        'ui.router', 'angular-cloudinary', 'ngCookies','flow'
-    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'cloudinaryProvider','$locationProvider',
-        function ($stateProvider, $urlRouterProvider, $httpProvider, cloudinaryProvider,$locationProvider) {
+        'ui.router', 'ngCookies', 'flow', 'ngFileUpload'
+    ]).config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$locationProvider',
+
+        function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 
             $stateProvider.state('default', {
                 url: '',
@@ -111,17 +112,14 @@
                 }
             });
 
-            // $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise('/404');
 
+            $locationProvider.html5Mode(true);
 
-            /*This is for the cpagesloudinary image service*/
-            cloudinaryProvider.config({
-                upload_endpoint: 'https://api.cloudinary.com/v1_1/', // default
-                cloud_name: 'sugeesh' // required
-                // upload_preset: 'my_preset', // optional
-            });
-
-
-        }]);
+        }]).run(["$rootScope", "$state", function ($rootScope, $state) {
+        $rootScope.$on("$stateChangeStart", function (event) {
+                event.preventDefault();
+                $state.go("home", {}, {reload: true});
+        });
+    }]);
 })();
