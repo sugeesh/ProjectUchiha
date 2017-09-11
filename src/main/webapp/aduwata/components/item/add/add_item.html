@@ -94,11 +94,11 @@
                                 <fieldset>
                                     <legend>Upload 3 Other images</legend>
                                     <input type="file" ngf-select ng-model="vm.files" name="file"
-                                           ngf-resize="{width: 195, height: 243,centerCrop: true}" ngf-multiple="true" ngf-max-files="3"
+                                           ngf-resize="{width: 640, height: 640,centerCrop: true}" ngf-multiple="true" ngf-max-files="3"
                                            ngf-accept="'image/jpg'" required>
                                     <br/>
                                     <img ng-repeat="f in vm.files" ngf-thumbnail="f" class="thumb"
-                                         ngf-size="{width: 195, height: 243, quality: 0.8}">
+                                         ngf-size="{width: 320, height: 320, quality: 0.8}">
                                 </fieldset>
                                 <br/>
                             </form>
