@@ -1,0 +1,601 @@
+<script xmlns:style="http://www.w3.org/1999/xhtml">
+    $(document).ready(function () {
+        $('#carousel-example-generic').carousel({
+            interval: 3500
+        });
+
+        var clickEvent = false;
+        $('#carousel-example-generic').on('click', '.nav a', function () {
+            clickEvent = true;
+            $('.nav li').removeClass('active');
+            $(this).parent().addClass('active');
+        }).on('slid.bs.carousel', function (e) {
+            if (!clickEvent) {
+                var count = $('.nav').children().length - 1;
+                var current = $('.nav li.active');
+                current.removeClass('active').next().addClass('active');
+                var id = parseInt(current.data('slide-to'));
+                if (count == id) {
+                    $('.nav li').first().addClass('active');
+                }
+            }
+            clickEvent = false;
+        });
+    });
+
+
+</script>
+
+<div class="row">
+    <div class="container" style="width: 100%">
+        <div class="box-body" style="padding: 0px">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="./resources/tem1/img/banner1.jpg" alt="First slide" style="width:100%">
+                        <!--<div class="carousel-caption">
+                            First Slide
+                        </div>-->
+                    </div>
+                    <div class="item">
+                        <img src="./resources/tem1/img/banner2.jpg" alt="Second slide" style="width:100%">
+                    </div>
+                    <div class="item">
+                        <img src="./resources/tem1/img/banner3.jpg" alt="Third slide" style="width:100%">
+                    </div>
+                </div>
+                <span class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="fa fa-angle-left"></span>
+                        </span>
+                <span class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="fa fa-angle-right"></span>
+                        </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12" style="height:50px;"></div>
+
+<div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container" style="width: 100%">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <h2 class="section-title">VEHICLES</h2>
+                    <div class="product-carousel">
+
+                        <div class="single-product">
+                            <div class="product-f-image" align="middle">
+                                <!--<img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.vehicleList[0].advertisement_id}}_0.jpg" alt="">-->
+                                <img src="https://s3.amazonaws.com/aduwata/hd-wallpapers-amazing-8.jpg" alt="" style="width:195px;height:243px; -o-object-fit: contain;" align="middle">
+                                <div class="product-hover">
+                                    <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to-->
+                                        <!--cart</a>-->
+                                    <a ng-click="vm.routeToView(vm.vehicleList[0].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a href="single-product.html">{{vm.vehicleList[0].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.vehicleList[0].price}}</ins>
+                                <del>{{vm.vehicleList[0].district}}</del>
+                            </div>
+                        </div>
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/1_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.vehicleList[1].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.vehicleList[1].advertisement_id)">{{vm.vehicleList[1].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.vehicleList[1].price}}</ins>
+                                <del>{{vm.vehicleList[1].district}}</del>
+                            </div>
+                        </div>
+
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.vehicleList[2].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.vehicleList[2].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.vehicleList[2].advertisement_id)">{{vm.vehicleList[2].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.vehicleList[2].price}}</ins>
+                                <del>{{vm.vehicleList[2].district}}</del>
+                            </div>
+                        </div>
+
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.vehicleList[3].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.vehicleList[3].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.vehicleList[3].advertisement_id)">{{vm.vehicleList[3].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.vehicleList[3].price}}</ins>
+                                <del>{{vm.vehicleList[3].district}}</del>
+                            </div>
+                        </div>
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.vehicleList[4].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.vehicleList[4].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.vehicleList[4].advertisement_id)">{{vm.vehicleList[4].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.vehicleList[4].price}}</ins>
+                                <del>{{vm.vehicleList[4].district}}</del>
+                            </div>
+                        </div>
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.vehicleList[5].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.vehicleList[5].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.vehicleList[5].advertisement_id)">{{vm.vehicleList[5].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.vehicleList[5].price}}</ins>
+                                <del>{{vm.vehicleList[5].district}}</del>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End main content area -->
+
+<div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container" style="width: 100%">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="latest-product">
+                    <h2 class="section-title">ELECTRONICS</h2>
+                    <div class="product-carousel">
+
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.electronicList[0].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.electronicList[0].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.electronicList[0].advertisement_id)">{{vm.electronicList[0].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.electronicList[0].price}}</ins>
+                                <del>{{vm.electronicList[0].district}}</del>
+                            </div>
+                        </div>
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.electronicList[1].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.electronicList[1].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.electronicList[1].advertisement_id)">{{vm.electronicList[1].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.electronicList[1].price}}</ins>
+                                <del>{{vm.electronicList[1].district}}</del>
+                            </div>
+                        </div>
+
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.electronicList[2].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.electronicList[2].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.electronicList[2].advertisement_id)">{{vm.electronicList[2].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.electronicList[2].price}}</ins>
+                                <del>{{vm.electronicList[2].district}}</del>
+                            </div>
+                        </div>
+
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.electronicList[3].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.electronicList[3].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.electronicList[3].advertisement_id)">{{vm.electronicList[3].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.electronicList[3].price}}</ins>
+                                <del>{{vm.electronicList[3].district}}</del>
+                            </div>
+                        </div>
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.electronicList[4].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.electronicList[4].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.electronicList[4].advertisement_id)">{{vm.electronicList[4].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.electronicList[4].price}}</ins>
+                                <del>{{vm.electronicList[4].district}}</del>
+                            </div>
+                        </div>
+                        <div class="single-product">
+                            <div class="product-f-image">
+                                <img src="https://s3.amazonaws.com/aduwata/item_images/{{vm.electronicList[5].advertisement_id}}_0.jpg" alt="">
+                                <div class="product-hover">
+                                    <a ng-click="vm.routeToView(vm.electronicList[5].advertisement_id)" class="view-details-link"><i
+                                            class="fa fa-link"></i>
+                                        See details</a>
+                                </div>
+                            </div>
+
+                            <h2><a ng-click="vm.routeToView(vm.electronicList[5].advertisement_id)">{{vm.electronicList[5].title}}</a></h2>
+
+                            <div class="product-carousel-price">
+                                <ins>{{vm.electronicList[5].price}}</ins>
+                                <del>{{vm.electronicList[5].district}}</del>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End main content area -->
+
+<div class="brands-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container" style="width: 100%">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="brand-wrapper">
+                    <div class="brand-list">
+                        <img src="./resources/tem1/img/brand1.png" alt="">
+                        <img src="./resources/tem1/img/brand2.png" alt="">
+                        <img src="./resources/tem1/img/brand3.png" alt="">
+                        <img src="./resources/tem1/img/brand4.png" alt="">
+                        <img src="./resources/tem1/img/brand5.png" alt="">
+                        <img src="./resources/tem1/img/brand6.png" alt="">
+                        <img src="./resources/tem1/img/brand1.png" alt="">
+                        <img src="./resources/tem1/img/brand2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End brands area -->
+
+<div class="slider-area">
+    <!-- Slider -->
+    <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+            <li>
+                <img src="./resources/tem1/img/h4-slide.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        iPhone <span class="primary">6 <strong>Plus</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">Dual SIM</h4>
+                    <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            <li><img src="./resources/tem1/img/h4-slide2.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        by one, get one <span class="primary">50% <strong>off</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">school supplies & backpacks.*</h4>
+                    <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            <li><img src="./resources/tem1/img/h4-slide3.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">Select Item</h4>
+                    <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            <li><img src="./resources/tem1/img/h4-slide4.png" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">& Phone</h4>
+                    <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- ./Slider -->
+</div> <!-- End slider area -->
+
+<div class="promo-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container" style="width: 100%">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo1">
+                    <i class="fa fa-refresh"></i>
+                    <p>30 Days return</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo2">
+                    <i class="fa fa-truck"></i>
+                    <p>Free shipping</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo3">
+                    <i class="fa fa-lock"></i>
+                    <p>Secure payments</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="single-promo promo4">
+                    <i class="fa fa-gift"></i>
+                    <p>New products</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End promo area -->
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container" style="width: 100%">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Top Sellers</h2>
+                    <a href="" class="wid-view-more">View All</a>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-1.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-2.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Apple new mac book 2015</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-3.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Recently Viewed</h2>
+                    <a href="#" class="wid-view-more">View All</a>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-4.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-1.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-2.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Top New</h2>
+                    <a href="#" class="wid-view-more">View All</a>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-3.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-4.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="single-product.html"><img src="./resources/tem1/img/product-thumb-1.jpg" alt=""
+                                                           class="product-thumb"></a>
+                        <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>$400.00</ins>
+                            <del>$425.00</del>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End product widget area -->
+
+
+<!-- Latest jQuery form server -->
+<script src="https://code.jquery.com/jquery.min.js"></script>
+
+<!-- Bootstrap JS form CDN -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- jQuery sticky menu -->
+<script src="./resources/tem1/js/owl.carousel.min.js"></script>
+<script src="./resources/tem1/js/jquery.sticky.js"></script>
+
+<!-- jQuery easing -->
+<script src="./resources/tem1/js/jquery.easing.1.3.min.js"></script>
+
+<!-- Main Script -->
+<script src="./resources/tem1/js/main.js"></script>
+
+<!-- Slider -->
+<script type="text/javascript" src="./resources/tem1/js/bxslider.min.js"></script>
+<script type="text/javascript" src="./resources/tem1/js/script.slider.js"></script>
+
+
